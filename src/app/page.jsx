@@ -8,10 +8,10 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-// --- 1. LANGUAGE DICTIONARY (Updated with Articles) ---
+// --- 1. LANGUAGE DICTIONARY (Updated with About Us button) ---
 const dict = {
   en: {
-    hero: { subtitle: "Endow Better Opportunities", title: "Connecting Japan & The World.", desc: "Maximizing the infinite potential of global talent through highly skilled engineering, specified skills, and premier language education.", cta: "Contact Us" },
+    hero: { subtitle: "Endow Better Opportunities", title: "Connecting Japan & The World.", desc: "Maximizing the infinite potential of global talent through highly skilled engineering, specified skills, and premier language education.", cta: "Contact Us", aboutBtn: "About Us" },
     services: { 
       title: "OUR SERVICES",
       s1Title: "High Skilled Engineers", s1Desc: "Recruiting top IT and engineering talent directly from Indonesian universities.",
@@ -29,7 +29,7 @@ const dict = {
     clientsHeader: "OUR CLIENTS",
   },
   id: {
-    hero: { subtitle: "Memberikan Peluang Lebih Baik", title: "Menghubungkan Jepang & Dunia.", desc: "Memaksimalkan potensi tak terbatas dari talenta global melalui keahlian teknik tingkat tinggi, keterampilan khusus, dan pendidikan bahasa utama.", cta: "Hubungi Kami" },
+    hero: { subtitle: "Memberikan Peluang Lebih Baik", title: "Menghubungkan Jepang & Dunia.", desc: "Memaksimalkan potensi tak terbatas dari talenta global melalui keahlian teknik tingkat tinggi, keterampilan khusus, dan pendidikan bahasa utama.", cta: "Hubungi Kami", aboutBtn: "Tentang Kami" },
     services: { 
       title: "LAYANAN KAMI",
       s1Title: "Insinyur Berketerampilan Tinggi", s1Desc: "Merekrut talenta IT dan teknik terbaik langsung dari universitas di Indonesia.",
@@ -47,11 +47,11 @@ const dict = {
     clientsHeader: "KLIEN KAMI",
   },
   ja: {
-    hero: { subtitle: "すべての人により良い機会を", title: "日本と世界をつなぐ。", desc: "高度なエンジニアリング、特定技能、最高水準の語学教育を通じて、グローバル人材の無限の可能性を最大限に引き出します。", cta: "お問い合わせ" },
+    hero: { subtitle: "すべての人により良い機会を", title: "日本と世界をつなぐ。", desc: "高度なエンジニアリング、特定技能、最高水準の語学教育を通じて、グローバル人材の無限の可能性を最大限に引き出します。", cta: "お問い合わせ", aboutBtn: "私たちについて" },
     services: { 
       title: "サービス",
       s1Title: "高度ITエンジニア", s1Desc: "インドネシアの大学から直接、優秀なITおよびエンジニアリングの人材を採用します。",
-      s2Title: "特定技能労働者", s2Desc: "日本の幅広い産業に向けて、活気に密ちた競争力のある人材を提供します。",
+      s2Title: "特定技能労働者", s2Desc: "日本の幅広い産業に向けて、活気に満ちた競争力のある人材を提供します。",
       s3Title: "カパンジュパン プラットフォーム", s3Desc: "ハイレベルなインドネシア人材に特化した日本初の就職プラットフォーム。",
       s4Title: "エデュラボ オンライン", s4Desc: "JLPTから面接対策まで、総合的なオンライン日本語教育。"
     },
@@ -162,15 +162,31 @@ export default function ReimaginedLandingPage() {
           <motion.p variants={springUp} className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10">
             {t.hero.desc}
           </motion.p>
-          <motion.button 
-            variants={springUp} 
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(20, 184, 166, 0.3)" }} 
-            whileTap={{ scale: 0.95 }} 
-            onClick={() => router.push('/contact')} 
-            className="bg-teal-500 text-slate-950 px-8 py-4 rounded-full font-bold flex items-center gap-2 mx-auto transition-colors"
-          >
-            {t.hero.cta} <ArrowUpRight className="w-5 h-5" />
-          </motion.button>
+          
+          {/* Button Container added here for side-by-side buttons */}
+          <motion.div variants={springUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+            
+            {/* Primary Button: Contact Us */}
+            <motion.button 
+              whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(20, 184, 166, 0.3)" }} 
+              whileTap={{ scale: 0.95 }} 
+              onClick={() => router.push('/contact')} 
+              className="bg-teal-500 text-slate-950 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-colors w-full sm:w-auto"
+            >
+              {t.hero.cta} <ArrowUpRight className="w-5 h-5" />
+            </motion.button>
+
+            {/* Secondary Button: About Us */}
+            <motion.button 
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }} 
+              whileTap={{ scale: 0.95 }} 
+              onClick={() => router.push('/about')} 
+              className="bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-colors w-full sm:w-auto hover:border-white/60"
+            >
+              {t.hero.aboutBtn}
+            </motion.button>
+
+          </motion.div>
         </motion.div>
       </section>
 
@@ -191,7 +207,6 @@ export default function ReimaginedLandingPage() {
             className="md:col-span-2 bg-slate-100 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
           >
             <Image src="https://picsum.photos/seed/engineer_dummy_v2/1200/800" alt="Engineers" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            {/* White gradient fading to right */}
             <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" /> 
             
             <div className="absolute top-6 right-6 w-12 h-12 bg-white text-teal-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 z-20">
@@ -212,7 +227,6 @@ export default function ReimaginedLandingPage() {
             className="bg-slate-900 rounded-[2rem] shadow-xl flex flex-col justify-end relative overflow-hidden group cursor-pointer"
           >
             <Image src="https://picsum.photos/seed/manufacturing_dummy/800/800" alt="Worker" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            {/* Strong dark overlay */}
             <div className="absolute inset-0 bg-slate-950/85 group-hover:bg-slate-950/75 transition-colors duration-500" /> 
             
             <div className="relative z-20 p-8">
@@ -232,7 +246,6 @@ export default function ReimaginedLandingPage() {
             className="bg-teal-50 rounded-[2rem] shadow-sm border border-teal-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
           >
             <Image src="https://picsum.photos/seed/platform_dummy_v2/800/800" alt="Platform" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            {/* Soft teal overlay */}
             <div className="absolute inset-0 bg-teal-50/90 group-hover:bg-teal-50/80 transition-colors duration-500" /> 
             
             <div className="absolute top-6 right-6 w-12 h-12 bg-white text-teal-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 z-20">
@@ -250,13 +263,11 @@ export default function ReimaginedLandingPage() {
             variants={springUp} 
             whileHover={{ y: -6 }} 
             onClick={() => router.push('/services')}
-            className="md:col-span-2 bg-slate-900 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer p-8 md:p-10" // Padding and dark theme
+            className="md:col-span-2 bg-slate-900 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer p-8 md:p-10" 
           >
             <Image src="https://picsum.photos/seed/study/1200/800" alt="Study" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            {/* Dark dim overlay for readability */}
             <div className="absolute inset-0 bg-slate-950/70 group-hover:bg-slate-950/60 transition-colors duration-500" /> 
             
-            {/* Text directly inside the card with new colors and mt-auto */}
             <div className="relative z-20 mt-auto">
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <BookOpen size={24} />
