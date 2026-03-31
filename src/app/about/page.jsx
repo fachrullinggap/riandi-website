@@ -261,7 +261,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
       {/* --- NAVBAR --- */}
-      <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
+      <Navbar lang={lang} handleLangChange={handleLangChange} theme="solid" />
 
       {/* --- HERO SECTION --- */}
       <section className="pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 min-h-[85vh]">

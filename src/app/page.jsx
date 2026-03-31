@@ -3,21 +3,38 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, ArrowUpRight, Code, Users, BookOpen, Building2, MapPin, ArrowUp, Cpu, MonitorPlay, HeartHandshake, Clock } from "lucide-react";
+import { 
+  Globe, ArrowUpRight, Compass, GraduationCap, Briefcase, Languages, 
+  MapPin, ArrowUp, Cpu, MonitorPlay, HeartHandshake, Clock, User, 
+  Building, Users, BookOpen 
+} from "lucide-react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-// --- 1. LANGUAGE DICTIONARY (Updated with About Us button) ---
+// --- 1. LANGUAGE DICTIONARY ---
 const dict = {
   en: {
-    hero: { subtitle: "Endow Better Opportunities", title: "Connecting Japan & The World.", desc: "Maximizing the infinite potential of global talent through highly skilled engineering, specified skills, and premier language education.", cta: "Contact Us", aboutBtn: "About Us" },
+    hero: { subtitle: "Endow Better Opportunities", title: "Finding Your Way to Japan", desc: "For talents building their careers and companies seeking the right people.", cta: "Contact Us", aboutBtn: "About Us" },
+    split: {
+      indTitle: "For Individuals",
+      indDesc: "Start your journey toward working in Japan with clear guidance and preparation.",
+      compTitle: "For Companies",
+      compDesc: "Access qualified and prepared talent with the right skills and mindset for the Japanese work environment."
+    },
     services: { 
       title: "OUR SERVICES",
-      s1Title: "High Skilled Engineers", s1Desc: "Recruiting top IT and engineering talent directly from Indonesian universities.",
-      s2Title: "Specified Skilled Workers", s2Desc: "Providing vibrant, competitive talent for a wide range of industries in Japan.",
-      s3Title: "KapanJepan Platform", s3Desc: "Japan's premier employment platform specializing in high-level Indonesian human resources.",
-      s4Title: "EduLabo Online", s4Desc: "Comprehensive online Japanese language education, from JLPT to interview prep."
+      s1Title: "Rianer", s1Desc: "Personalized career consultation and guidance.",
+      s2Title: "JaLink Academy", s2Desc: "Japanese language training (N5–N2 & Business Japanese).",
+      s3Title: "Kakehashi by JaLink", s3Desc: "Interpreter and communication support (JP ⇄ ID).",
+      s4Title: "JaLink Career", s4Desc: "Talent placement and hiring support for Japan."
+    },
+    flow: {
+      title: "A Clear Path, for Both Sides",
+      step1: "Prepare",
+      step2: "Connect",
+      step3: "Match",
+      step4: "Start Working"
     },
     seminarsHeader: "LATEST NEWS",
     articles: [
@@ -30,12 +47,25 @@ const dict = {
   },
   id: {
     hero: { subtitle: "Memberikan Peluang Lebih Baik", title: "Menghubungkan Jepang & Dunia.", desc: "Memaksimalkan potensi tak terbatas dari talenta global melalui keahlian teknik tingkat tinggi, keterampilan khusus, dan pendidikan bahasa utama.", cta: "Hubungi Kami", aboutBtn: "Tentang Kami" },
+    split: {
+      indTitle: "Untuk Individu",
+      indDesc: "Mulailah perjalanan Anda untuk bekerja di Jepang dengan panduan dan persiapan yang jelas.",
+      compTitle: "Untuk Perusahaan",
+      compDesc: "Dapatkan akses ke talenta yang memenuhi syarat dan siap dengan keterampilan serta pola pikir yang tepat untuk lingkungan kerja Jepang."
+    },
     services: { 
       title: "LAYANAN KAMI",
-      s1Title: "Insinyur Berketerampilan Tinggi", s1Desc: "Merekrut talenta IT dan teknik terbaik langsung dari universitas di Indonesia.",
-      s2Title: "Pekerja Berketerampilan Khusus", s2Desc: "Menyediakan talenta yang dinamis dan kompetitif untuk berbagai industri di Jepang.",
-      s3Title: "Platform KapanJepan", s3Desc: "Platform pekerjaan utama Jepang yang mengkhususkan diri pada sumber daya manusia Indonesia tingkat tinggi.",
-      s4Title: "EduLabo Online", s4Desc: "Pendidikan bahasa Jepang online komprehensif, dari JLPT hingga persiapan wawancara."
+      s1Title: "Rianer", s1Desc: "Konsultasi dan bimbingan karier yang dipersonalisasi.",
+      s2Title: "JaLink Academy", s2Desc: "Pelatihan bahasa Jepang (N5–N2 & Bahasa Jepang Bisnis).",
+      s3Title: "Kakehashi by JaLink", s3Desc: "Layanan penerjemah dan dukungan komunikasi (Jepang ⇄ Indonesia).",
+      s4Title: "JaLink Career", s4Desc: "Penempatan talenta dan dukungan rekrutmen untuk Jepang."
+    },
+    flow: {
+      title: "Jalan yang Jelas, untuk Kedua Belah Pihak",
+      step1: "Persiapan",
+      step2: "Koneksi",
+      step3: "Pencocokan",
+      step4: "Mulai Bekerja"
     },
     seminarsHeader: "BERITA TERBARU",
     articles: [
@@ -48,12 +78,25 @@ const dict = {
   },
   ja: {
     hero: { subtitle: "すべての人により良い機会を", title: "日本と世界をつなぐ。", desc: "高度なエンジニアリング、特定技能、最高水準の語学教育を通じて、グローバル人材の無限の可能性を最大限に引き出します。", cta: "お問い合わせ", aboutBtn: "私たちについて" },
+    split: {
+      indTitle: "個人の方へ",
+      indDesc: "明確なガイダンスと準備で、日本で働くための旅を始めましょう。",
+      compTitle: "企業の方へ",
+      compDesc: "日本の労働環境に適したスキルとマインドセットを持つ、優秀な即戦力人材にアクセスできます。"
+    },
     services: { 
       title: "サービス",
-      s1Title: "高度ITエンジニア", s1Desc: "インドネシアの大学から直接、優秀なITおよびエンジニアリングの人材を採用します。",
-      s2Title: "特定技能労働者", s2Desc: "日本の幅広い産業に向けて、活気に満ちた競争力のある人材を提供します。",
-      s3Title: "カパンジュパン プラットフォーム", s3Desc: "ハイレベルなインドネシア人材に特化した日本初の就職プラットフォーム。",
-      s4Title: "エデュラボ オンライン", s4Desc: "JLPTから面接対策まで、総合的なオンライン日本語教育。"
+      s1Title: "Rianer", s1Desc: "一人ひとりに合わせたキャリア相談とガイダンス。",
+      s2Title: "JaLink Academy", s2Desc: "日本語トレーニング（N5〜N2およびビジネス日本語）。",
+      s3Title: "Kakehashi by JaLink", s3Desc: "通訳・翻訳およびコミュニケーション支援（日 ⇄ 印）。",
+      s4Title: "JaLink Career", s4Desc: "日本向けのグローバル人材紹介および採用支援。"
+    },
+    flow: {
+      title: "双方にとって明確なプロセス",
+      step1: "準備",
+      step2: "つながる",
+      step3: "マッチング",
+      step4: "就業開始"
     },
     seminarsHeader: "最新ニュース",
     articles: [
@@ -146,7 +189,7 @@ export default function ReimaginedLandingPage() {
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-950 pb-20">
         <motion.div initial={{ scale: 1.1, opacity: 0 }} animate={{ scale: 1, opacity: 0.4 }} transition={{ duration: 1.5, ease: "easeOut" }} className="absolute inset-0">
           <Image src="https://picsum.photos/seed/cityscape/1920/1080" alt="City Background" fill className="object-cover mix-blend-luminosity" priority />
         </motion.div>
@@ -163,10 +206,7 @@ export default function ReimaginedLandingPage() {
             {t.hero.desc}
           </motion.p>
           
-          {/* Button Container added here for side-by-side buttons */}
           <motion.div variants={springUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-            
-            {/* Primary Button: Contact Us */}
             <motion.button 
               whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(20, 184, 166, 0.3)" }} 
               whileTap={{ scale: 0.95 }} 
@@ -176,7 +216,6 @@ export default function ReimaginedLandingPage() {
               {t.hero.cta} <ArrowUpRight className="w-5 h-5" />
             </motion.button>
 
-            {/* Secondary Button: About Us */}
             <motion.button 
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }} 
               whileTap={{ scale: 0.95 }} 
@@ -185,13 +224,53 @@ export default function ReimaginedLandingPage() {
             >
               {t.hero.aboutBtn}
             </motion.button>
-
           </motion.div>
         </motion.div>
       </section>
 
-      {/* --- SERVICES SECTION (Updated Layout & Overlays) --- */}
-      <section className="py-32 px-6 max-w-7xl mx-auto overflow-hidden">
+      {/* --- SPLIT SECTION (INDIVIDUALS VS COMPANIES) --- */}
+      <section className="relative z-20 -mt-20 px-6 max-w-7xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          {/* For Individuals */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 80, damping: 20 }}
+            className="bg-white rounded-[2rem] p-10 shadow-xl border border-slate-100 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300 group"
+          >
+            <div className="w-16 h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:text-white transition-all duration-300">
+              <User size={32} />
+            </div>
+            <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight">{t.split.indTitle}</h3>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              {t.split.indDesc}
+            </p>
+          </motion.div>
+
+          {/* For Companies */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.1 }}
+            className="bg-slate-900 rounded-[2rem] p-10 shadow-2xl border border-slate-800 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300 group"
+          >
+            <div className="w-16 h-16 bg-white/10 text-teal-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:text-white transition-all duration-300">
+              <Building size={32} />
+            </div>
+            <h3 className="text-3xl font-black text-white mb-4 tracking-tight">{t.split.compTitle}</h3>
+            <p className="text-slate-300 font-medium leading-relaxed">
+              {t.split.compDesc}
+            </p>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* --- SERVICES SECTION --- */}
+      <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900">{t.services.title}</h2>
           <div className="w-24 h-1 bg-teal-500 mx-auto mt-6 rounded-full"></div>
@@ -199,18 +278,18 @@ export default function ReimaginedLandingPage() {
 
         <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px]" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           
-          {/* Service 1: High Skilled Engineers */}
+          {/* Service 1: Rianer */}
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
             onClick={() => router.push('/services')}
             className="md:col-span-2 bg-slate-100 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
           >
-            <Image src="https://picsum.photos/seed/engineer_dummy_v2/1200/800" alt="Engineers" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="https://picsum.photos/seed/career/1200/800" alt="Career Consultation" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" /> 
             
             <div className="absolute top-6 right-6 w-12 h-12 bg-white text-teal-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 z-20">
-              <Code size={24} />
+              <Compass size={24} />
             </div>
             
             <div className="relative z-20 w-full md:w-3/4 p-8 md:p-10">
@@ -219,37 +298,37 @@ export default function ReimaginedLandingPage() {
             </div>
           </motion.div>
 
-          {/* Service 2: Specified Skilled Workers */}
+          {/* Service 2: JaLink Academy */}
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
             onClick={() => router.push('/services')}
             className="bg-slate-900 rounded-[2rem] shadow-xl flex flex-col justify-end relative overflow-hidden group cursor-pointer"
           >
-            <Image src="https://picsum.photos/seed/manufacturing_dummy/800/800" alt="Worker" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="https://picsum.photos/seed/classroom/800/800" alt="Language Academy" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-slate-950/85 group-hover:bg-slate-950/75 transition-colors duration-500" /> 
             
             <div className="relative z-20 p-8">
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-xl flex items-center justify-center mb-5 group-hover:-rotate-12 transition-transform duration-300">
-                <Users size={24} />
+                <GraduationCap size={24} />
               </div>
               <h3 className="text-2xl font-bold mb-3 text-white leading-tight">{t.services.s2Title}</h3>
               <p className="text-slate-300 text-sm font-medium leading-relaxed">{t.services.s2Desc}</p>
             </div>
           </motion.div>
 
-          {/* Service 3: KapanJepan Platform */}
+          {/* Service 3: Kakehashi by JaLink */}
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
             onClick={() => router.push('/services')}
             className="bg-teal-50 rounded-[2rem] shadow-sm border border-teal-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
           >
-            <Image src="https://picsum.photos/seed/platform_dummy_v2/800/800" alt="Platform" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="https://picsum.photos/seed/meeting/800/800" alt="Interpreter" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-teal-50/90 group-hover:bg-teal-50/80 transition-colors duration-500" /> 
             
             <div className="absolute top-6 right-6 w-12 h-12 bg-white text-teal-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 z-20">
-              <Building2 size={24} />
+              <Languages size={24} />
             </div>
             
             <div className="relative z-20 mt-auto p-8">
@@ -258,19 +337,19 @@ export default function ReimaginedLandingPage() {
             </div>
           </motion.div>
 
-          {/* Service 4: EduLabo Online */}
+          {/* Service 4: JaLink Career */}
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
             onClick={() => router.push('/services')}
             className="md:col-span-2 bg-slate-900 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group cursor-pointer p-8 md:p-10" 
           >
-            <Image src="https://picsum.photos/seed/study/1200/800" alt="Study" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="https://picsum.photos/seed/businessjob/1200/800" alt="Career Placement" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-slate-950/70 group-hover:bg-slate-950/60 transition-colors duration-500" /> 
             
             <div className="relative z-20 mt-auto">
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <BookOpen size={24} />
+                <Briefcase size={24} />
               </div>
               <h3 className="text-3xl md:text-4xl font-black mb-3 text-white tracking-tight">{t.services.s4Title}</h3>
               <p className="text-slate-200 text-sm font-medium leading-relaxed max-w-sm">{t.services.s4Desc}</p>
@@ -278,6 +357,74 @@ export default function ReimaginedLandingPage() {
           </motion.div>
 
         </motion.div>
+      </section>
+
+      {/* --- NEW FLOW SECTION --- */}
+      <section className="py-24 px-6 bg-slate-900 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-100px" }} 
+            transition={{ duration: 0.6 }} 
+            className="text-center mb-24"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-white">{t.flow.title}</h2>
+            <div className="w-24 h-1 bg-teal-500 mx-auto mt-6 rounded-full"></div>
+          </motion.div>
+
+          <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-4 px-4">
+            
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-[48px] left-[12%] right-[12%] h-1 bg-slate-800 rounded-full z-0">
+               <motion.div 
+                 initial={{ width: 0 }} 
+                 whileInView={{ width: "100%" }} 
+                 viewport={{ once: true }} 
+                 transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }} 
+                 className="h-full bg-teal-500 rounded-full" 
+               />
+            </div>
+            
+            {/* Connecting Line (Mobile) */}
+            <div className="md:hidden absolute top-[10%] bottom-[10%] left-1/2 -translate-x-1/2 w-1 bg-slate-800 rounded-full z-0">
+               <motion.div 
+                 initial={{ height: 0 }} 
+                 whileInView={{ height: "100%" }} 
+                 viewport={{ once: true }} 
+                 transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }} 
+                 className="w-full bg-teal-500 rounded-full" 
+               />
+            </div>
+
+            {/* Step Items */}
+            {[
+              { icon: BookOpen, label: t.flow.step1 },
+              { icon: Globe, label: t.flow.step2 },
+              { icon: HeartHandshake, label: t.flow.step3 },
+              { icon: Briefcase, label: t.flow.step4 }
+            ].map((step, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.3 }}
+                className="relative z-10 flex flex-col items-center group w-full md:w-1/4"
+              >
+                <div className="w-24 h-24 bg-slate-800 border-4 border-slate-900 text-teal-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:border-teal-400 group-hover:text-white transition-all duration-300 shadow-2xl">
+                  <step.icon size={32} />
+                </div>
+                <h3 className="text-xl font-bold text-white text-center bg-slate-900 px-4 md:px-2 py-1 rounded-lg">
+                  {step.label}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* --- LATEST NEWS SECTION (Carousel) --- */}

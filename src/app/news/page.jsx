@@ -106,7 +106,7 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
       
-      <Navbar lang={lang} handleLangChange={handleLangChange} theme="solid" />
+      <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION (Repositioned and colored for picture) --- */}
       <section className="pt-32 pb-16 px-6 relative overflow-hidden flex flex-col items-center justify-center text-center">

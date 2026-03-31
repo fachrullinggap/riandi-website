@@ -2,25 +2,26 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Globe, Mail, PhoneOutgoing, ArrowRightCircle } from "lucide-react";
+import { Mail, PhoneOutgoing, ArrowRightCircle } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 
 // --- FOOTER DICTIONARY ---
 const footerDict = {
   en: {
     contactBox: { inquire: "Please feel free to inquire.", contactUs: "Contact us", newsletter: "E-mail Magazine Registration", hours: "Hours: 10:00 - 19:00 [excluding weekends & holidays]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
-    footer: { address: "Tokyo HQ: Asakusa, Taito-ku | Jakarta Branch: SCBD, South Jakarta", rights: "© 2026 Career Diversity Inc." }
+    footer: { address: "Tokyo HQ: Asakusa, Taito-ku | Jakarta Branch: SCBD, South Jakarta", rights: "© 2026 JaLink" }
   },
   id: {
     contactBox: { inquire: "Silakan hubungi kami.", contactUs: "Hubungi kami", newsletter: "Pendaftaran Majalah E-mail", hours: "Jam Kerja: 10:00 - 19:00 [kecuali akhir pekan & hari libur]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
-    footer: { address: "Kantor Pusat Tokyo: Asakusa, Taito-ku | Cabang Jakarta: SCBD, Jakarta Selatan", rights: "© 2026 Career Diversity Inc." }
+    footer: { address: "Kantor Pusat Tokyo: Asakusa, Taito-ku | Cabang Jakarta: SCBD, Jakarta Selatan", rights: "© 2026 JaLink" }
   },
   ja: {
     contactBox: { inquire: "お気軽にお問い合わせください。", contactUs: "お問い合わせ", newsletter: "メールマガジン登録", hours: "受付時間 10:00-19:00 [ 土・日・祝日除く ]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
-    footer: { address: "東京本社：台東区浅草 | ジャカルタ支店：南ジャカルタ SCBD", rights: "© 2026 Career Diversity Inc." }
+    footer: { address: "東京本社：台東区浅草 | ジャカルタ支店：南ジャカルタ SCBD", rights: "© 2026 JaLink" }
   }
 };
 
@@ -38,8 +39,17 @@ export default function Footer({ lang }) {
       <motion.div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
         
         <motion.div variants={fadeUp} className="flex flex-col gap-6">
-          <div className="text-4xl font-black text-white flex items-center gap-3 mb-2 cursor-pointer" onClick={() => router.push('/')}>
-            <Globe className="w-8 h-8 text-teal-400" /> CareerDiv.
+          <div className="text-4xl font-black text-white flex items-center gap-4 mb-2 cursor-pointer" onClick={() => router.push('/')}>
+            {/* --- UPDATED LOGO WITH WHITE BACKGROUND --- */}
+            <Image 
+              src="/favicon.ico" 
+              alt="JaLink Logo" 
+              width={56}  // Increased size slightly to accommodate the background container
+              height={56} 
+              className="object-contain bg-white rounded-xl p-2 shadow-sm" // White bg, padding, rounded edges
+              unoptimized
+            /> 
+            JaLink
           </div>
           <p className="text-slate-400 leading-relaxed max-w-sm">{t.footer.address}</p>
         </motion.div>
@@ -48,7 +58,7 @@ export default function Footer({ lang }) {
           <p className="text-slate-400 font-medium">{t.contactBox.inquire}</p>
           <div className="flex items-center gap-4">
             <PhoneOutgoing className="w-8 h-8 text-teal-500" />
-            <a href="tel:0368240105" className="text-4xl font-extrabold text-teal-400 hover:text-white transition-colors">03-6824-0105</a>
+            <a className="text-4xl font-extrabold text-teal-400 transition-colors">03-6824-0105</a>
           </div>
           <p className="text-xs text-slate-500 font-medium mb-4 tracking-wider">{t.contactBox.hours}</p>
           <div className="flex flex-col w-full gap-3 mt-2">
@@ -69,7 +79,7 @@ export default function Footer({ lang }) {
             <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#0077B5] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#0077B5]/30">
               <FaLinkedin className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.li}</span>
             </a>
-            <a href="https://wa.me/85860001198" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#25D366] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#25D366]/40">
+            <a href="https://wa.me/+6285860001198" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#25D366] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#25D366]/40">
               <FaWhatsapp className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">WhatsApp</span>
             </a>
           </div>

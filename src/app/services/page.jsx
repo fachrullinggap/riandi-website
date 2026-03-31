@@ -32,29 +32,29 @@ const dict = {
     servicesMenu: [
       {
         id: "01",
-        title: "High Skilled Engineers",
-        desc: "Recruitment of Top Engineers in Indonesia",
+        title: "Rianer",
+        desc: "Personalized career consultation and guidance",
       },
       {
         id: "02",
-        title: "Specified Skilled Workers",
-        desc: "Young and vibrant talent for your company",
+        title: "JaLink Academy",
+        desc: "Japanese language training (N5–N2 & Business Japanese)",
       },
       {
         id: "03",
-        title: "KapanJepan Platform",
-        desc: "Japan's premier employment platform",
+        title: "Kakehashi by JaLink",
+        desc: "Interpreter and communication support (JP ⇄ ID)",
       },
       {
         id: "04",
-        title: "EduLabo Online",
-        desc: "Japanese language services online",
+        title: "JaLink Career",
+        desc: "Talent placement and hiring support for Japan",
       },
     ],
     sec1: {
       num: "01",
-      title: "High Skilled Engineers",
-      subtitle: "Recruitment of Top Engineers in Indonesia",
+      title: "Rianer",
+      subtitle: "Personalized career consultation and guidance",
       desc: "We work with local high schools, Japanese language institutes, and university educational institutions in Indonesia, forming our original human talent pool.",
       roles: [
         {
@@ -113,8 +113,8 @@ const dict = {
     },
     sec2: {
       num: "02",
-      title: "Specified Skilled Workers",
-      subtitle: "Bringing vitality to your business",
+      title: "JaLink Academy",
+      subtitle: "Japanese language training (N5–N2 & Business Japanese)",
       desc: "We have partnerships with local vocational training schools and can introduce personnel across a wide range of industries.",
       industries: [
         { icon: Heart, label: "Caregiving" },
@@ -154,29 +154,29 @@ const dict = {
     servicesMenu: [
       {
         id: "01",
-        title: "Insinyur Ahli",
-        desc: "Rekrutmen Insinyur Terbaik di Indonesia",
+        title: "Rianer",
+        desc: "Konsultasi dan bimbingan karier yang dipersonalisasi",
       },
       {
         id: "02",
-        title: "Pekerja Keterampilan Khusus",
-        desc: "Talenta muda untuk perusahaan Anda",
+        title: "JaLink Academy",
+        desc: "Pelatihan bahasa Jepang (N5–N2 & Bahasa Jepang Bisnis)",
       },
       {
         id: "03",
-        title: "Platform KapanJepan",
-        desc: "Platform pekerjaan utama Jepang",
+        title: "Kakehashi by JaLink",
+        desc: "Layanan penerjemah dan dukungan komunikasi (Jepang ⇄ Indonesia)",
       },
       {
         id: "04",
-        title: "EduLabo Online",
-        desc: "Layanan bahasa Jepang online",
+        title: "JaLink Career",
+        desc: "Penempatan talenta dan dukungan rekrutmen untuk Jepang",
       },
     ],
     sec1: {
       num: "01",
-      title: "Insinyur Keterampilan Tinggi",
-      subtitle: "Rekrutmen Insinyur Terbaik di Indonesia",
+      title: "Rianer",
+      subtitle: "Konsultasi dan bimbingan karier yang dipersonalisasi",
       desc: "Kami bekerja sama dengan sekolah menengah setempat, lembaga bahasa Jepang, dan institusi pendidikan universitas di Indonesia, membentuk pusat bakat manusia asli kami.",
       roles: [
         {
@@ -230,8 +230,8 @@ const dict = {
     },
     sec2: {
       num: "02",
-      title: "Pekerja Keterampilan Khusus",
-      subtitle: "Membawa vitalitas ke bisnis Anda",
+      title: "JaLink Academy",
+      subtitle: "Pelatihan bahasa Jepang (N5–N2 & Bahasa Jepang Bisnis)",
       desc: "Kami memiliki kemitraan dengan sekolah pelatihan kejuruan lokal dan dapat memperkenalkan personel di berbagai industri.",
       industries: [
         { icon: Heart, label: "Perawatan" },
@@ -271,29 +271,29 @@ const dict = {
     servicesMenu: [
       {
         id: "01",
-        title: "理系人材採用",
-        desc: "インドネシアの優秀な理系・エンジニア人材の採用",
+        title: "Rianer",
+        desc: "一人ひとりに合わせたキャリア相談とガイダンス",
       },
       {
         id: "02",
-        title: "特定技能人材採用",
-        desc: "インドネシアの若く活気ある人材を企業の活力に",
+        title: "JaLink Academy",
+        desc: "日本語トレーニング（N5〜N2およびビジネス日本語）",
       },
       {
         id: "03",
-        title: "KapanJepan",
-        desc: "日本唯一のインドネシア高度人材特化型プラットフォーム",
+        title: "Kakehashi by JaLink",
+        desc: "通訳・翻訳およびコミュニケーション支援（日 ⇄ 印）",
       },
       {
         id: "04",
-        title: "EduLabo",
-        desc: "インドネシア人向け日本語サービスをオンラインで提供",
+        title: "JaLink Career",
+        desc: "日本向けのグローバル人材紹介および採用支援",
       },
     ],
     sec1: {
       num: "01",
-      title: "理系人材採用",
-      subtitle: "インドネシアの優秀な理系・エンジニア人材の採用",
+      title: "Rianer",
+      subtitle: "一人ひとりに合わせたキャリア相談とガイダンス",
       desc: "弊社では、インドネシア現地の高校、日本語教育機関、大学の教育機関と連携しており、独自の人材母集団を形成しています。",
       roles: [
         {
@@ -352,8 +352,8 @@ const dict = {
     },
     sec2: {
       num: "02",
-      title: "特定技能人材採用",
-      subtitle: "インドネシアの若く活気ある人材を企業の活力に",
+      title: "JaLink Academy",
+      subtitle: "日本語トレーニング（N5〜N2およびビジネス日本語）",
       desc: "インドネシア現地の職業訓練校と提携しており、幅広い業種での特定技能人材のご紹介が可能です。",
       industries: [
         { icon: Heart, label: "介護" },
@@ -420,7 +420,7 @@ export default function ServicePage() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // NEW: Function to handle scrolling when a "View Details" button is clicked
+  // Function to handle scrolling when a "View Details" button is clicked
   const scrollToSection = (id) => {
     const section = document.getElementById(`section-${id}`);
     if (section) {
@@ -443,14 +443,6 @@ export default function ServicePage() {
       opacity: 1,
       y: 0,
       transition: { type: "spring", stiffness: 80, damping: 15 },
-    },
-  };
-  const navDrop = {
-    hidden: { opacity: 0, y: -30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 80, damping: 20, delay: 0.2 },
     },
   };
 
@@ -516,7 +508,6 @@ export default function ServicePage() {
                 <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
                 <p className="text-sm text-slate-300 max-w-xs">{item.desc}</p>
 
-                {/* UPDATE: Added onClick to scroll to section */}
                 <button
                   onClick={() => scrollToSection(item.id)}
                   className="mt-4 px-6 py-2 bg-amber-500/90 hover:bg-amber-400 text-white font-bold rounded-full text-sm backdrop-blur-sm transition-colors opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 duration-300"
@@ -529,11 +520,9 @@ export default function ServicePage() {
         </motion.div>
       </section>
 
-      {/* --- SECTION 01: HIGH SKILLED ENGINEERS --- */}
-      {/* UPDATE: Added id="section-01" so the button can find it */}
+      {/* --- SECTION 01 --- */}
       <section id="section-01" className="py-24 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Header & Main Image */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -575,7 +564,6 @@ export default function ServicePage() {
             </motion.p>
           </motion.div>
 
-          {/* Engineer Roles Icons */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -604,7 +592,6 @@ export default function ServicePage() {
             ))}
           </motion.div>
 
-          {/* Number Stats */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -631,7 +618,6 @@ export default function ServicePage() {
             </div>
           </motion.div>
 
-          {/* 3 Reasons Section */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -720,6 +706,7 @@ export default function ServicePage() {
               variants={fadeUp}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => router.push('/contact')}
               className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl text-lg transition-colors shadow-lg shadow-amber-500/20"
             >
               {t.cta.btn}
@@ -728,14 +715,12 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* --- SECTION 02: SPECIFIED SKILLED WORKER --- */}
-      {/* UPDATE: Added id="section-02" so the button can find it */}
+      {/* --- SECTION 02 --- */}
       <section
         id="section-02"
         className="py-24 bg-slate-50 border-b border-slate-200 scroll-mt-24"
       >
         <div className="max-w-7xl mx-auto px-6">
-          {/* Header & Main Image */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -777,7 +762,6 @@ export default function ServicePage() {
             </motion.p>
           </motion.div>
 
-          {/* Industry Icons */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -802,7 +786,6 @@ export default function ServicePage() {
             ))}
           </motion.div>
 
-          {/* Service Flow (Vertical Steps) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -834,7 +817,6 @@ export default function ServicePage() {
                       <p className="text-slate-600 text-sm">{step.desc}</p>
                     </div>
                   </motion.div>
-                  {/* Down Arrow separator */}
                   {idx !== t.sec2.flow.length - 1 && (
                     <div className="flex justify-center py-2 text-slate-300">
                       <ArrowDown size={24} />

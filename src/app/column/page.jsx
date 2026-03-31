@@ -88,7 +88,7 @@ export default function ColumnPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
-      <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
+      <Navbar lang={lang} handleLangChange={handleLangChange} theme="solid" />
 
       {/* --- CLEAN HERO SECTION --- */}
       <section className="pt-48 pb-12 px-6 relative overflow-hidden flex flex-col items-center justify-center">

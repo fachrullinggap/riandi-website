@@ -8,6 +8,9 @@ import {
   ArrowUp,
   Send,
   Loader2,
+  UploadCloud,
+  FileCheck2,
+  Check
 } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -15,109 +18,126 @@ import Footer from "../../components/Footer";
 // --- 1. LANGUAGE DICTIONARY ---
 const dict = {
   en: {
-    hero: { title: "CONTACT", subtitle: "Get in Touch" },
+    hero: { title: "SUBMISSION", subtitle: "Candidate Profile" },
     form: {
-      name: "Name",
-      nameFuri: "Name (Phonetic)",
-      req: "Required",
-      opt: "Optional",
-      company: "Company Name",
-      dept: "Department / Position",
-      email: "Email Address",
-      type: "Inquiry Type",
-      typeSelect: "-- Please select an item --",
-      typeOpts: [
-        "About Indonesia HR Solution",
-        "For universities/partners",
-        "About CareerDiv. Platform",
-        "Other",
-      ],
-      content: "Inquiry Details",
-      contentPlaceholder: "Please enter the details of your inquiry here.",
+      title: "Candidate Profile Submission Form",
+      jobId: "Applied Job ID",
+      name: "Candidate Name",
+      location: "Current Location",
+      japaneseLevel: "Japanese Level",
+      currentSalary: "Current Salary",
+      expectedSalary: "Expected Salary",
+      joiningDate: "Current Joining Date",
+      otherProcess: "Other Interview Process",
+      selectOne: "Select one",
+      jpLevels: ["Native", "N1", "N2", "N3", "N4", "N5", "None"],
+      processOpts: ["None", "1st Interview", "2nd Interview", "Final Interview", "Offer Received"],
+      uploadRirekisho: "Upload Rirekisho",
+      uploadShokumu: "Upload Shokumukeirekisho",
+      uploadEngCv: "Upload English CV (optional)",
+      dropText: "Drop a file here or click to upload",
+      maxSize: "Maximum file size: 10MB",
+      format: "Format: pdf, doc, docx",
       privacy: "I agree to the handling of personal information",
       privacyDesc: "Please read our Privacy Policy and agree before inquiring.",
       confirm: "I have confirmed the entered information",
-      confirmDesc:
-        "A confirmation screen will not be displayed. Please check your entries before sending.",
-      submit: "Send Message",
-      sending: "Sending...",
+      confirmDesc: "A confirmation screen will not be displayed. Please check your entries before sending.",
+      submitBtn: "Submit",
+      sending: "Submitting...",
     },
+    success: { title: "Success!", msg: "Profile submitted successfully." }
   },
   id: {
-    hero: { title: "KONTAK", subtitle: "Hubungi Kami" },
+    hero: { title: "PENGIRIMAN", subtitle: "Profil Kandidat" },
     form: {
-      name: "Nama Lengkap",
-      nameFuri: "Nama (Ejaan)",
-      req: "Wajib",
-      opt: "Opsional",
-      company: "Nama Perusahaan",
-      dept: "Departemen / Jabatan",
-      email: "Alamat Email",
-      type: "Jenis Pertanyaan",
-      typeSelect: "-- Pilih kategori --",
-      typeOpts: [
-        "Tentang Solusi SDM Indonesia",
-        "Untuk universitas/mitra",
-        "Tentang Platform CareerDiv.",
-        "Lainnya",
-      ],
-      content: "Detail Pertanyaan",
-      contentPlaceholder: "Silakan masukkan detail pertanyaan Anda di sini.",
+      title: "[KapanJepan Agent] Formulir Pengiriman Profil Kandidat",
+      jobId: "ID Pekerjaan yang Dilamar",
+      name: "Nama Kandidat",
+      location: "Lokasi Saat Ini",
+      japaneseLevel: "Tingkat Bahasa Jepang",
+      currentSalary: "Gaji Saat Ini",
+      expectedSalary: "Gaji yang Diharapkan",
+      joiningDate: "Tanggal Bergabung Saat Ini",
+      otherProcess: "Proses Wawancara Lainnya",
+      selectOne: "Pilih salah satu",
+      jpLevels: ["Native", "N1", "N2", "N3", "N4", "N5", "Tidak ada"],
+      processOpts: ["Tidak ada", "Wawancara ke-1", "Wawancara ke-2", "Wawancara Akhir", "Menerima Tawaran"],
+      uploadRirekisho: "Unggah Rirekisho",
+      uploadShokumu: "Unggah Shokumukeirekisho",
+      uploadEngCv: "Unggah CV Bahasa Inggris (opsional)",
+      dropText: "Jatuhkan file di sini atau klik untuk mengunggah",
+      maxSize: "Ukuran file maksimum: 10MB",
+      format: "Format: pdf, doc, docx",
       privacy: "Saya setuju dengan penanganan informasi pribadi",
-      privacyDesc:
-        "Silakan baca Kebijakan Privasi kami dan setujui sebelum bertanya.",
+      privacyDesc: "Silakan baca Kebijakan Privasi kami dan setujui sebelum bertanya.",
       confirm: "Saya telah mengonfirmasi informasi yang dimasukkan",
-      confirmDesc:
-        "Layar konfirmasi tidak akan ditampilkan. Harap periksa entri Anda sebelum mengirim.",
-      submit: "Kirim Pesan",
+      confirmDesc: "Layar konfirmasi tidak akan ditampilkan. Harap periksa entri Anda sebelum mengirim.",
+      submitBtn: "Kirim Pesan",
       sending: "Mengirim...",
     },
+    success: { title: "Berhasil!", msg: "Profil berhasil dikirim." }
   },
   ja: {
-    hero: { title: "CONTACT", subtitle: "お問い合わせ" },
+    hero: { title: "SUBMISSION", subtitle: "候補者プロフィール" },
     form: {
-      name: "氏名",
-      nameFuri: "氏名 (フリガナ)",
-      req: "必須",
-      opt: "任意",
-      company: "企業名",
-      dept: "部署・役職",
-      email: "メールアドレス",
-      type: "お問い合わせ項目",
-      typeSelect: "-- 選択してください --",
-      typeOpts: [
-        "インドネシア人材ソリューションについて",
-        "大学・提携先様向け",
-        "キャリアプラットフォームについて",
-        "その他",
-      ],
-      content: "お問い合わせ内容",
-      contentPlaceholder: "お問い合わせ内容をご記入ください。",
+      title: "[KapanJepan Agent] 候補者プロフィール提出フォーム",
+      jobId: "応募求人ID",
+      name: "候補者名",
+      location: "現住所",
+      japaneseLevel: "日本語レベル",
+      currentSalary: "現在の年収",
+      expectedSalary: "希望年収",
+      joiningDate: "入社可能日",
+      otherProcess: "他社の選考状況",
+      selectOne: "選択してください",
+      jpLevels: ["ネイティブ", "N1", "N2", "N3", "N4", "N5", "なし"],
+      processOpts: ["なし", "1次面接", "2次面接", "最終面接", "内定獲得"],
+      uploadRirekisho: "履歴書のアップロード",
+      uploadShokumu: "職務経歴書のアップロード",
+      uploadEngCv: "英文CVのアップロード (任意)",
+      dropText: "ここにファイルをドロップするか、クリックしてアップロード",
+      maxSize: "最大ファイルサイズ: 10MB",
+      format: "フォーマット: pdf, doc, docx",
       privacy: "個人情報の取り扱いについて同意する",
-      privacyDesc:
-        "お問い合わせの際には「個人情報の取り扱いについて」をお読みいただき、予め同意の上、お問い合わせください。",
+      privacyDesc: "お問い合わせの際には「個人情報の取り扱いについて」をお読みいただき、予め同意の上、お問い合わせください。",
       confirm: "確認した",
-      confirmDesc:
-        "確認画面は表示されません。送信ボタンを押す前に、入力内容に間違いがないかご確認ください。",
-      submit: "送信する",
+      confirmDesc: "確認画面は表示されません。送信ボタンを押す前に、入力内容に間違いがないかご確認ください。",
+      submitBtn: "送信する",
       sending: "送信中...",
     },
+    success: { title: "送信完了", msg: "プロフィールを送信しました。" }
   },
 };
+
+const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
+const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 15 } } };
 
 export default function ContactPage() {
   const router = useRouter();
   const [lang, setLang] = useState("en");
+  const [pageUrl, setPageUrl] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  // 1. Check if they have a saved language when the page loads
   useEffect(() => {
     const savedLang = localStorage.getItem("preferredLang");
     if (savedLang) {
       setLang(savedLang);
     }
+    
+    // Set the redirect URL for FormSubmit to include a success parameter
+    const url = new URL(window.location.href);
+    url.searchParams.set("success", "true");
+    setPageUrl(url.toString());
+
+    // Check if the current URL has the success parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("success") === "true") {
+      setShowSuccess(true);
+      window.history.replaceState({}, document.title, window.location.pathname);
+      setTimeout(() => setShowSuccess(false), 5000);
+    }
   }, []);
 
-  // 2. Save the new language to the browser when they change it
   const handleLangChange = (e) => {
     const newLang = e.target.value;
     setLang(newLang);
@@ -125,23 +145,28 @@ export default function ContactPage() {
   };
 
   const t = dict[lang];
-
   const [showScrollTop, setShowScrollTop] = useState(false);
-
-  // New state to handle loading animation on button
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Form State
   const [formData, setFormData] = useState({
-    name: "",
-    nameFuri: "",
-    company: "",
-    dept: "",
-    email: "",
-    type: "",
-    content: "",
+    Applied_Job_ID: "",
+    Candidate_Name: "",
+    Current_Location: "",
+    Japanese_Level: "",
+    Current_Salary: "",
+    Expected_Salary: "",
+    Current_Joining_Date: "",
+    Other_Interview_Process: "",
     privacy: false,
     confirm: false,
+  });
+
+  // File States
+  const [files, setFiles] = useState({
+    Rirekisho: null,
+    Shokumukeirekisho: null,
+    English_CV: null,
   });
 
   const handleChange = (e) => {
@@ -152,62 +177,15 @@ export default function ContactPage() {
     }));
   };
 
-  // --- REAL EMAIL SUBMISSION LOGIC ---
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Sending data to FormSubmit API securely via AJAX
-      const response = await fetch(
-        "https://formsubmit.co/ajax/rint.jp23@gmail.com",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            _subject: `New Inquiry from ${formData.company} (${formData.name})`, // Email Subject
-            Name: formData.name,
-            "Name (Phonetic)": formData.nameFuri,
-            Company: formData.company,
-            Department: formData.dept,
-            Email: formData.email,
-            Inquiry_Type: formData.type,
-            Message: formData.content,
-          }),
-        },
-      );
-
-      if (response.ok) {
-        alert(
-          lang === "ja"
-            ? "メッセージを送信しました！"
-            : lang === "id"
-              ? "Pesan berhasil dikirim!"
-              : "Message sent successfully!",
-        );
-        // Clear form after success
-        setFormData({
-          name: "",
-          nameFuri: "",
-          company: "",
-          dept: "",
-          email: "",
-          type: "",
-          content: "",
-          privacy: false,
-          confirm: false,
-        });
-      } else {
-        alert("There was a problem sending your message. Please try again.");
+  const handleFileChange = (e, fieldName) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        alert("File size exceeds 10MB limit.");
+        e.target.value = null;
+        return;
       }
-    } catch (error) {
-      console.error(error);
-      alert("Network error. Please check your connection and try again.");
-    } finally {
-      setIsSubmitting(false);
+      setFiles(prev => ({ ...prev, [fieldName]: file }));
     }
   };
 
@@ -220,58 +198,42 @@ export default function ContactPage() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // --- ANIMATION SETTINGS ---
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 80, damping: 15 },
-    },
-  };
-  const navDrop = {
-    hidden: { opacity: 0, y: -30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 80, damping: 20, delay: 0.2 },
-    },
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
-      {/* --- NAVBAR --- */}
+      
+      {/* --- SUCCESS NOTIFICATION POPUP --- */}
+      <AnimatePresence>
+        {showSuccess && (
+          <motion.div
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -50, scale: 0.9 }}
+            className="fixed top-24 right-6 z-[100] bg-teal-500 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4"
+          >
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+              <Check size={24} className="text-white" />
+            </div>
+            <div>
+              <h4 className="font-bold text-lg leading-tight">{t.success.title}</h4>
+              <p className="text-teal-50 text-sm">{t.success.msg}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
       <section className="pt-40 pb-20 px-6 bg-slate-900 rounded-b-[3rem] relative overflow-hidden flex flex-col items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 to-slate-800 pointer-events-none"></div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="relative z-10 text-center flex flex-col items-center"
-        >
-          <motion.div
-            variants={fadeUp}
-            className="w-20 h-20 bg-teal-500/20 text-teal-400 rounded-full flex items-center justify-center mb-6"
-          >
+        <motion.div initial="hidden" animate="visible" variants={containerVariants} className="relative z-10 text-center flex flex-col items-center">
+          <motion.div variants={fadeUp} className="w-20 h-20 bg-teal-500/20 text-teal-400 rounded-full flex items-center justify-center mb-6">
             <Mail size={40} />
           </motion.div>
-          <motion.h1
-            variants={fadeUp}
-            className="text-5xl md:text-6xl font-black text-white tracking-widest mb-4 uppercase"
-          >
+          <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-black text-white tracking-widest mb-4 uppercase">
             {t.hero.title}
           </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="text-teal-400 font-medium tracking-widest"
-          >
+          <motion.p variants={fadeUp} className="text-teal-400 font-medium tracking-widest">
             {t.hero.subtitle}
           </motion.p>
         </motion.div>
@@ -280,200 +242,179 @@ export default function ContactPage() {
       {/* --- FORM SECTION --- */}
       <section className="py-24 px-6 max-w-4xl mx-auto">
         <motion.form
-          onSubmit={handleSubmit}
-          className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100"
+          action="https://formsubmit.co/rint.jp23@gmail.com"
+          method="POST"
+          encType="multipart/form-data"
+          onSubmit={() => setIsSubmitting(true)}
+          className="bg-white p-8 md:p-14 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
-          {/* Grid for Name & Furigana */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <motion.div variants={fadeUp} className="flex flex-col gap-2">
-              <label className="font-bold text-slate-700 flex items-center gap-2">
-                {t.form.name}{" "}
-                <span className="text-[10px] bg-rose-100 text-rose-600 px-2 py-0.5 rounded uppercase tracking-wider">
-                  {t.form.req}
-                </span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all"
+          {/* FormSubmit Configuration Hidden Inputs */}
+          <input type="hidden" name="_subject" value={`New Candidate Profile: ${formData.Candidate_Name || 'Submission'}`} />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          {pageUrl && <input type="hidden" name="_next" value={pageUrl} />}
+
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 tracking-tight">
+            {t.form.title}
+          </motion.h2>
+
+          {/* Text Inputs */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.jobId} <span className="text-rose-500">*</span></label>
+            <input type="text" name="Applied_Job_ID" required value={formData.Applied_Job_ID} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.name} <span className="text-rose-500">*</span></label>
+            <input type="text" name="Candidate_Name" required value={formData.Candidate_Name} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.location} <span className="text-rose-500">*</span></label>
+            <input type="text" name="Current_Location" required value={formData.Current_Location} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.japaneseLevel} <span className="text-rose-500">*</span></label>
+            <select name="Japanese_Level" required value={formData.Japanese_Level} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none cursor-pointer">
+              <option value="" disabled>{t.form.selectOne}</option>
+              {t.form.jpLevels.map((lvl, i) => <option key={i} value={lvl}>{lvl}</option>)}
+            </select>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.currentSalary} <span className="text-rose-500">*</span></label>
+            <input type="text" name="Current_Salary" required value={formData.Current_Salary} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.expectedSalary} <span className="text-rose-500">*</span></label>
+            <input type="text" name="Expected_Salary" required value={formData.Expected_Salary} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-6">
+            <label className="text-slate-600 font-medium">{t.form.joiningDate} <span className="text-rose-500">*</span></label>
+            <input type="text" name="Current_Joining_Date" required value={formData.Current_Joining_Date} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-10">
+            <label className="text-slate-600 font-medium">{t.form.otherProcess} <span className="text-rose-500">*</span></label>
+            <select name="Other_Interview_Process" required value={formData.Other_Interview_Process} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none cursor-pointer">
+              <option value="" disabled>{t.form.selectOne}</option>
+              {t.form.processOpts.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
+            </select>
+          </motion.div>
+
+          {/* 1. RIREKISHO FILE UPLOAD */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-8">
+            <label className="text-slate-600 font-medium">{t.form.uploadRirekisho} <span className="text-rose-500">*</span></label>
+            <label className="border border-dashed border-slate-400 bg-white rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-teal-500 hover:bg-teal-50/30 transition-colors">
+              {files.Rirekisho ? (
+                <div className="flex flex-col items-center text-teal-600">
+                  <FileCheck2 className="w-8 h-8 mb-2" />
+                  <span className="font-semibold text-center">{files.Rirekisho.name}</span>
+                  <span className="text-xs text-slate-500 mt-1">Click to change file</span>
+                </div>
+              ) : (
+                <>
+                  <UploadCloud className="w-8 h-8 text-slate-500 mb-3" strokeWidth={1.5} />
+                  <span className="text-slate-700 font-medium mb-1">{t.form.dropText}</span>
+                  <span className="text-slate-400 text-sm">{t.form.maxSize}</span>
+                </>
+              )}
+              <input 
+                type="file" 
+                name="Rirekisho"
+                className="hidden" 
+                required={!files.Rirekisho}
+                accept=".pdf,.doc,.docx"
+                onChange={(e) => handleFileChange(e, "Rirekisho")}
               />
-            </motion.div>
-            <motion.div variants={fadeUp} className="flex flex-col gap-2">
-              <label className="font-bold text-slate-700 flex items-center gap-2">
-                {t.form.nameFuri}{" "}
-                <span className="text-[10px] bg-rose-100 text-rose-600 px-2 py-0.5 rounded uppercase tracking-wider">
-                  {t.form.req}
-                </span>
-              </label>
-              <input
-                type="text"
-                name="nameFuri"
-                required
-                value={formData.nameFuri}
-                onChange={handleChange}
-                className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all"
+            </label>
+            <span className="text-xs text-slate-500">{t.form.format}</span>
+          </motion.div>
+
+          {/* 2. SHOKUMUKEIREKISHO FILE UPLOAD */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-8">
+            <label className="text-slate-600 font-medium">{t.form.uploadShokumu} <span className="text-rose-500">*</span></label>
+            <label className="border border-dashed border-slate-400 bg-white rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-teal-500 hover:bg-teal-50/30 transition-colors">
+              {files.Shokumukeirekisho ? (
+                <div className="flex flex-col items-center text-teal-600">
+                  <FileCheck2 className="w-8 h-8 mb-2" />
+                  <span className="font-semibold text-center">{files.Shokumukeirekisho.name}</span>
+                  <span className="text-xs text-slate-500 mt-1">Click to change file</span>
+                </div>
+              ) : (
+                <>
+                  <UploadCloud className="w-8 h-8 text-slate-500 mb-3" strokeWidth={1.5} />
+                  <span className="text-slate-700 font-medium mb-1">{t.form.dropText}</span>
+                  <span className="text-slate-400 text-sm">{t.form.maxSize}</span>
+                </>
+              )}
+              <input 
+                type="file" 
+                name="Shokumukeirekisho"
+                className="hidden" 
+                required={!files.Shokumukeirekisho}
+                accept=".pdf,.doc,.docx"
+                onChange={(e) => handleFileChange(e, "Shokumukeirekisho")}
               />
-            </motion.div>
-          </div>
-
-          {/* Company */}
-          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-8">
-            <label className="font-bold text-slate-700 flex items-center gap-2">
-              {t.form.company}{" "}
-              <span className="text-[10px] bg-rose-100 text-rose-600 px-2 py-0.5 rounded uppercase tracking-wider">
-                {t.form.req}
-              </span>
             </label>
-            <input
-              type="text"
-              name="company"
-              required
-              value={formData.company}
-              onChange={handleChange}
-              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all"
-            />
+            <span className="text-xs text-slate-500">{t.form.format}</span>
           </motion.div>
 
-          {/* Department */}
-          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-8">
-            <label className="font-bold text-slate-700 flex items-center gap-2">
-              {t.form.dept}{" "}
-              <span className="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded uppercase tracking-wider">
-                {t.form.opt}
-              </span>
+          {/* 3. ENGLISH CV FILE UPLOAD (OPTIONAL) */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-10">
+            <label className="text-slate-600 font-medium">{t.form.uploadEngCv}</label>
+            <label className="border border-dashed border-slate-400 bg-white rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-teal-500 hover:bg-teal-50/30 transition-colors">
+              {files.English_CV ? (
+                <div className="flex flex-col items-center text-teal-600">
+                  <FileCheck2 className="w-8 h-8 mb-2" />
+                  <span className="font-semibold text-center">{files.English_CV.name}</span>
+                  <span className="text-xs text-slate-500 mt-1">Click to change file</span>
+                </div>
+              ) : (
+                <>
+                  <UploadCloud className="w-8 h-8 text-slate-500 mb-3" strokeWidth={1.5} />
+                  <span className="text-slate-700 font-medium mb-1">{t.form.dropText}</span>
+                  <span className="text-slate-400 text-sm">{t.form.maxSize}</span>
+                </>
+              )}
+              <input 
+                type="file" 
+                name="English_CV"
+                className="hidden" 
+                accept=".pdf,.doc,.docx"
+                onChange={(e) => handleFileChange(e, "English_CV")}
+              />
             </label>
-            <input
-              type="text"
-              name="dept"
-              value={formData.dept}
-              onChange={handleChange}
-              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all"
-            />
+            <span className="text-xs text-slate-500">{t.form.format}</span>
           </motion.div>
 
-          {/* Email */}
-          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-8">
-            <label className="font-bold text-slate-700 flex items-center gap-2">
-              {t.form.email}{" "}
-              <span className="text-[10px] bg-rose-100 text-rose-600 px-2 py-0.5 rounded uppercase tracking-wider">
-                {t.form.req}
-              </span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="xxx@xxxxx.xxx"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all"
-            />
-          </motion.div>
-
-          {/* Inquiry Type */}
-          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-8">
-            <label className="font-bold text-slate-700 flex items-center gap-2">
-              {t.form.type}{" "}
-              <span className="text-[10px] bg-rose-100 text-rose-600 px-2 py-0.5 rounded uppercase tracking-wider">
-                {t.form.req}
-              </span>
-            </label>
-            <div className="relative">
-              <select
-                name="type"
-                required
-                value={formData.type}
-                onChange={handleChange}
-                className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all appearance-none cursor-pointer"
-              >
-                <option value="" disabled>
-                  {t.form.typeSelect}
-                </option>
-                {t.form.typeOpts.map((opt, i) => (
-                  <option key={i} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none">
-                <svg
-                  className="w-5 h-5 text-slate-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Textarea */}
-          <motion.div variants={fadeUp} className="flex flex-col gap-2 mb-12">
-            <label className="font-bold text-slate-700 flex items-center gap-2">
-              {t.form.content}{" "}
-              <span className="text-[10px] bg-rose-100 text-rose-600 px-2 py-0.5 rounded uppercase tracking-wider">
-                {t.form.req}
-              </span>
-            </label>
-            <textarea
-              name="content"
-              required
-              rows="6"
-              placeholder={t.form.contentPlaceholder}
-              value={formData.content}
-              onChange={handleChange}
-              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all resize-none"
-            ></textarea>
-          </motion.div>
-
-          {/* Consents */}
-          <motion.div
-            variants={fadeUp}
-            className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200 mb-12 flex flex-col gap-6"
-          >
+          {/* Consents / Checkboxes */}
+          <motion.div variants={fadeUp} className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200 mb-10 flex flex-col gap-6">
             <label className="flex items-start gap-4 cursor-pointer group">
               <div className="relative flex items-center justify-center mt-1">
                 <input
                   type="checkbox"
-                  name="privacy"
                   required
                   checked={formData.privacy}
                   onChange={handleChange}
-                  className="peer appearance-none w-6 h-6 border-2 border-slate-300 rounded cursor-pointer checked:bg-teal-500 checked:border-teal-500 transition-colors"
+                  name="privacy"
+                  className="peer appearance-none w-6 h-6 border-2 border-slate-300 bg-white rounded cursor-pointer checked:bg-[#00c2a8] checked:border-[#00c2a8] transition-colors"
                 />
-                <svg
-                  className="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  ></path>
+                <svg className="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-slate-800 group-hover:text-teal-600 transition-colors">
+                <span className="font-bold text-slate-800 group-hover:text-[#00c2a8] transition-colors">
                   {t.form.privacy} <span className="text-rose-500 ml-1">*</span>
                 </span>
-                <span className="text-sm text-slate-500 mt-1">
-                  {t.form.privacyDesc}
-                </span>
+                <span className="text-sm text-slate-500 mt-1">{t.form.privacyDesc}</span>
               </div>
             </label>
 
@@ -483,33 +424,21 @@ export default function ContactPage() {
               <div className="relative flex items-center justify-center mt-1">
                 <input
                   type="checkbox"
-                  name="confirm"
                   required
                   checked={formData.confirm}
                   onChange={handleChange}
-                  className="peer appearance-none w-6 h-6 border-2 border-slate-300 rounded cursor-pointer checked:bg-teal-500 checked:border-teal-500 transition-colors"
+                  name="confirm"
+                  className="peer appearance-none w-6 h-6 border-2 border-slate-300 bg-white rounded cursor-pointer checked:bg-[#00c2a8] checked:border-[#00c2a8] transition-colors"
                 />
-                <svg
-                  className="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  ></path>
+                <svg className="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-slate-800 group-hover:text-teal-600 transition-colors">
+                <span className="font-bold text-slate-800 group-hover:text-[#00c2a8] transition-colors">
                   {t.form.confirm} <span className="text-rose-500 ml-1">*</span>
                 </span>
-                <span className="text-sm text-slate-500 mt-1">
-                  {t.form.confirmDesc}
-                </span>
+                <span className="text-sm text-slate-500 mt-1">{t.form.confirmDesc}</span>
               </div>
             </label>
           </motion.div>
@@ -521,32 +450,24 @@ export default function ContactPage() {
               disabled={isSubmitting}
               whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-              className={`px-12 py-4 font-black rounded-full text-lg flex items-center gap-3 shadow-lg transition-colors ${isSubmitting ? "bg-teal-400 cursor-not-allowed text-white/80" : "bg-teal-500 hover:bg-teal-400 text-white shadow-teal-500/30"}`}
+              className={`px-10 py-4 font-bold rounded-full text-lg flex items-center justify-center gap-3 transition-all ${isSubmitting ? "bg-[#00c2a8]/70 cursor-not-allowed text-white" : "bg-[#00c2a8] hover:bg-[#00a892] text-white shadow-lg shadow-[#00c2a8]/30"}`}
             >
               {isSubmitting ? (
                 <Loader2 className="animate-spin" size={20} />
               ) : (
-                <Send size={20} />
+                <Send size={20} className="-ml-1" />
               )}
-              {isSubmitting ? t.form.sending : t.form.submit}
+              {isSubmitting ? t.form.sending : t.form.submitBtn}
             </motion.button>
           </motion.div>
         </motion.form>
       </section>
 
-      {/* --- SUPER FOOTER (Integrated Contact & Socials) --- */}
       <Footer lang={lang} t={t} />
 
-      {/* --- SCROLL TO TOP --- */}
       <AnimatePresence>
         {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-lg hover:bg-teal-600 transition-colors z-[100] group"
-          >
+          <motion.button initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} onClick={scrollToTop} className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-lg hover:bg-teal-600 transition-colors z-[100] group">
             <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
           </motion.button>
         )}
