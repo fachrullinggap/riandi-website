@@ -2,44 +2,42 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUp, MessageCircle, MessageSquare } from "lucide-react";
+import {
+  ArrowUp,
+  Send,
+  FileText
+} from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 // --- LANGUAGE DICTIONARY ---
 const dict = {
   en: {
-    hero: { title: "CONTACT" },
-    tagline: "Let's talk about your plan",
-    cta: "Contact via WhatsApp",
+    hero: { title: "SUBMIT YOUR PROFILE" },
+    headline: "Start Your Journey to Japan",
+    description: "Share your profile with us and take the first step toward preparing your journey to Japan.\nWe will review your information and guide you through the next steps.",
+    cta: { btn: "Submit Your Profile" },
+    note: "Your information will be kept confidential and used only for guidance purposes.",
   },
   id: {
-    hero: { title: "KONTAK" },
-    tagline: "Mari kita bicarakan rencana Anda",
-    cta: "Hubungi via WhatsApp",
+    hero: { title: "KIRIM PROFIL ANDA" },
+    headline: "Mulai Perjalanan Anda ke Jepang",
+    description: "Bagikan profil Anda dengan kami dan ambil langkah pertama untuk mempersiapkan perjalanan Anda ke Jepang.\nKami akan meninjau informasi Anda dan membimbing Anda melalui langkah-langkah berikutnya.",
+    cta: { btn: "Kirim Profil Anda" },
+    note: "Informasi Anda akan dijaga secara rahasia dan hanya digunakan untuk tujuan bimbingan.",
   },
   ja: {
-    hero: { title: "お問い合わせ" },
-    tagline: "あなたのプランについて話し合いましょう",
-    cta: "WhatsAppでお問い合わせ",
-  },
+    hero: { title: "プロフィールを送信" },
+    headline: "日本で働く準備を始めましょう",
+    description: "プロフィールを共有して、日本での働くための準備の第一歩を踏み出しましょう。\nあなたの情報をレビューし、次のステップをガイドします。",
+    cta: { btn: "プロフィールを送信" },
+    note: "ご提供いただいた情報は機密保持され、ガイダンス目的のみに使用されます。",
+  }
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 80, damping: 15 },
-  },
-};
+const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 15 } } };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-};
-
-export default function ContactPage() {
+export default function SubmitPage() {
   const [lang, setLang] = useState("en");
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -72,6 +70,8 @@ export default function ContactPage() {
       <section className="pt-32 pb-24 px-6 bg-slate-900 min-h-[60vh] flex flex-col justify-center rounded-b-[3rem] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/pattern/1920/1080')] opacity-5 mix-blend-overlay"></div>
         <div className="max-w-4xl mx-auto w-full relative z-10 text-center">
+          
+          {/* Logo Icon */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -79,7 +79,7 @@ export default function ContactPage() {
             className="flex justify-center mb-8"
           >
             <div className="w-16 h-16 bg-teal-900/60 text-teal-400 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(20,184,166,0.15)]">
-              <MessageSquare size={32} strokeWidth={2.5} />
+              <FileText size={32} strokeWidth={2.5} />
             </div>
           </motion.div>
 
@@ -96,33 +96,66 @@ export default function ContactPage() {
       </section>
 
       {/* --- CONTENT SECTION --- */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <motion.h2 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent mb-16 leading-tight"
+            className="text-4xl md:text-5xl font-black text-slate-900 mb-10"
           >
-            {t.tagline}
+            {t.headline}
           </motion.h2>
-
-          <motion.a
+          
+          {/* <motion.p 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            href="https://wa.me/+6285860001198"
+            transition={{ delay: 0.1 }}
+            className="text-lg md:text-xl text-slate-600 leading-relaxed mb-16 whitespace-pre-line"
+          >
+            {t.description}
+          </motion.p> */}
+
+          <motion.p 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }} 
+            className="text-lg md:text-xl text-slate-600 leading-relaxed mb-16 italic whitespace-pre-line"
+          >
+            "{t.description}"
+          </motion.p>
+
+          <motion.a 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ delay: 0.2 }}
+            href="https://forms.gle/W2hMB3JkVLPW4LD98"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-12 py-6 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-2xl text-lg transition-all shadow-lg shadow-teal-500/30"
+            className="inline-flex items-center gap-2 px-12 py-5 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-2xl text-lg transition-colors shadow-lg shadow-teal-500/20"
           >
-            <MessageCircle size={24} />
-            {t.cta}
+            {t.cta.btn} <Send size={20} />
           </motion.a>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ delay: 0.3 }}
+            className="mt-16 p-6 bg-slate-50 rounded-2xl border border-slate-200"
+          >
+            <p className="text-sm md:text-base text-slate-600 italic">
+              📌 {t.note}
+            </p>
+          </motion.div>
         </div>
       </section>
 

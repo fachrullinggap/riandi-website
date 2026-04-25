@@ -8,6 +8,8 @@ const nextConfig = {
     // (Required for standard S3 hosting)
     unoptimized: true, 
   },
+  // Optional: Ensures folder-based structure for better SEO/S3 routing
+  trailingSlash: true,
 };
 
 export default nextConfig;

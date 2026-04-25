@@ -2,26 +2,26 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Mail, PhoneOutgoing, ArrowRightCircle } from "lucide-react";
+import { Mail, PhoneOutgoing } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 
 // --- FOOTER DICTIONARY ---
 const footerDict = {
   en: {
-    contactBox: { inquire: "Please feel free to inquire.", contactUs: "Contact us", newsletter: "E-mail Magazine Registration", hours: "Hours: 10:00 - 19:00 [excluding weekends & holidays]" },
+    contactBox: { inquire: "Please feel free to inquire.", hours: "Hours: 10:00 - 19:00 [excluding weekends & holidays]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
-    footer: { address: "Tokyo HQ: Asakusa, Taito-ku | Jakarta Branch: SCBD, South Jakarta", rights: "© 2026 JaLink" }
+    footer: { address: "DKI Jakarta, South Jakarta", rights: "© 2026 JaLink" }
   },
   id: {
-    contactBox: { inquire: "Silakan hubungi kami.", contactUs: "Hubungi kami", newsletter: "Pendaftaran Majalah E-mail", hours: "Jam Kerja: 10:00 - 19:00 [kecuali akhir pekan & hari libur]" },
+    contactBox: { inquire: "Silakan hubungi kami.", hours: "Jam Kerja: 10:00 - 19:00 [kecuali akhir pekan & hari libur]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
-    footer: { address: "Kantor Pusat Tokyo: Asakusa, Taito-ku | Cabang Jakarta: SCBD, Jakarta Selatan", rights: "© 2026 JaLink" }
+    footer: { address: "DKI Jakarta, South Jakarta", rights: "© 2026 JaLink" }
   },
   ja: {
-    contactBox: { inquire: "お気軽にお問い合わせください。", contactUs: "お問い合わせ", newsletter: "メールマガジン登録", hours: "受付時間 10:00-19:00 [ 土・日・祝日除く ]" },
+    contactBox: { inquire: "お気軽にお問い合わせください。", hours: "受付時間 10:00-19:00 [ 土・日・祝日除く ]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
-    footer: { address: "東京本社：台東区浅草 | ジャカルタ支店：南ジャカルタ SCBD", rights: "© 2026 JaLink" }
+    footer: { address: "ジャカルタ支店：南ジャカルタ", rights: "© 2026 JaLink" }
   }
 };
 
@@ -38,15 +38,15 @@ export default function Footer({ lang }) {
       
       <motion.div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
         
+        {/* LOGO & ADDRESS */}
         <motion.div variants={fadeUp} className="flex flex-col gap-6">
           <div className="text-4xl font-black text-white flex items-center gap-4 mb-2 cursor-pointer" onClick={() => router.push('/')}>
-            {/* --- UPDATED LOGO WITH WHITE BACKGROUND --- */}
             <Image 
               src="/favicon.ico" 
               alt="JaLink Logo" 
-              width={56}  // Increased size slightly to accommodate the background container
+              width={56}
               height={56} 
-              className="object-contain bg-white rounded-xl p-2 shadow-sm" // White bg, padding, rounded edges
+              className="object-contain bg-white rounded-xl p-2 shadow-sm"
               unoptimized
             /> 
             JaLink
@@ -54,36 +54,52 @@ export default function Footer({ lang }) {
           <p className="text-slate-400 leading-relaxed max-w-sm">{t.footer.address}</p>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="flex flex-col items-start gap-3">
+        {/* CONTACT INFORMATION */}
+        <motion.div variants={fadeUp} className="flex flex-col items-start gap-4">
           <p className="text-slate-400 font-medium">{t.contactBox.inquire}</p>
-          <div className="flex items-center gap-4">
+          
+          {/* Phone Display */}
+          {/* <div className="flex items-center gap-4">
             <PhoneOutgoing className="w-8 h-8 text-teal-500" />
-            <a className="text-4xl font-extrabold text-teal-400 transition-colors">03-6824-0105</a>
+            <span className="text-3xl md:text-4xl font-extrabold text-teal-400">+62-858-6000-1198</span>
+          </div> */}
+
+          <div className="flex items-center gap-4 mt-2">
+            <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-teal-500">
+               <PhoneOutgoing size={20} />
+            </div>
+            <span className="text-xl font-bold text-slate-200">+62-858-6000-1198</span>
           </div>
-          <p className="text-xs text-slate-500 font-medium mb-4 tracking-wider">{t.contactBox.hours}</p>
-          <div className="flex flex-col w-full gap-3 mt-2">
-            <button onClick={() => router.push('/contact')} className="bg-teal-500 hover:bg-teal-400 text-slate-900 px-6 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-colors w-full">
-              <Mail size={18} /> {t.contactBox.contactUs} <ArrowRightCircle size={18} />
-            </button>
+
+          {/* Email Display (Static Text) */}
+          <div className="flex items-center gap-4 mt-2">
+            <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-teal-500">
+               <Mail size={20} />
+            </div>
+            <span className="text-xl font-bold text-slate-200">rint.jp23@gmail.com</span>
           </div>
+
+          <p className="text-xs text-slate-500 font-medium tracking-wider mt-2">{t.contactBox.hours}</p>
         </motion.div>
 
+        {/* SOCIAL MEDIA GRID */}
         <motion.div variants={fadeUp}>
           <div className="grid grid-cols-2 gap-4 auto-rows-[90px]">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#1877F2] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#1877F2]/30">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#1877F2] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
               <FaFacebook className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.fb}</span>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#E1306C] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#E1306C]/30">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#E1306C] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
               <FaInstagram className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.insta}</span>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#0077B5] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#0077B5]/30">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#0077B5] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
               <FaLinkedin className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.li}</span>
             </a>
-            <a href="https://wa.me/+6285860001198" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#25D366] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm hover:shadow-[#25D366]/40">
+            <a href="https://wa.me/+6285860001198" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#25D366] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
               <FaWhatsapp className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">WhatsApp</span>
             </a>
           </div>
         </motion.div>
+
       </motion.div>
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800/50 text-sm text-center font-medium">{t.footer.rights}</div>
     </footer>

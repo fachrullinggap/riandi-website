@@ -7,9 +7,30 @@ import Image from "next/image";
 
 // --- NAVBAR DICTIONARY ---
 const navDict = {
-  en: { home: "Home", about: "About", service: "Services", column: "Column", news: "News", contact: "Submission" },
-  id: { home: "Beranda", about: "Tentang", service: "Layanan", column: "Kolom", news: "Berita", contact: "Pengiriman" },
-  ja: { home: "トップ", about: "私たちについて", service: "サービス", column: "コラム", news: "ニュース", contact: "提出" }
+  en: { 
+    home: "Home", 
+    individuals: "For Individuals", 
+    companies: "For Companies", 
+    submit: "Submit Your Profile", 
+    about: "About", 
+    contact: "Contact" 
+  },
+  id: { 
+    home: "Beranda", 
+    individuals: "Untuk Individu", 
+    companies: "Untuk Perusahaan", 
+    submit: "Kirim Profil Anda", 
+    about: "Tentang", 
+    contact: "Kontak" 
+  },
+  ja: { 
+    home: "トップ", 
+    individuals: "個人のお客様へ", 
+    companies: "法人のお客様へ", 
+    submit: "プロフィールを提出", 
+    about: "私たちについて", 
+    contact: "お問い合わせ" 
+  }
 };
 
 export default function Navbar({ lang, handleLangChange, theme = "blend" }) {
@@ -19,33 +40,25 @@ export default function Navbar({ lang, handleLangChange, theme = "blend" }) {
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    // Check initial scroll on load
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const t = navDict[lang] || navDict.en; // Fallback to EN
+  const t = navDict[lang] || navDict.en;
 
-  // Clean framer-motion animation that works perfectly with Next.js SSR
   const navDrop = { 
     hidden: { opacity: 0, y: -30 }, 
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } } 
   };
 
-  // 1. Determine Text Color
-  // Since the scrolled navbar is now dark, text is white when scrolled. 
-  // If not scrolled and theme is "solid" (light page top), text is dark. Otherwise, white.
   const textColor = isScrolled ? "text-white" : (theme === "solid" ? "text-slate-900" : "text-white");
   
-  // 2. Determine Background - Modern Dark Glassmorphism Effect
   const bgColor = isScrolled 
     ? "bg-slate-950/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] border-b border-white/10" 
     : "bg-transparent border-b border-transparent";
 
-  // 3. Determine Padding (Edge-to-edge layout)
   const padding = isScrolled ? "py-4 px-6 md:px-12 lg:px-16" : "py-6 px-6 md:px-12 lg:px-16";
 
-  // Using specific transitions to prevent conflict with Framer Motion's Y-axis transform
   const navClasses = `fixed top-0 left-0 w-full z-50 transition-[background-color,color,padding,border-color] duration-300 ${bgColor} ${textColor} ${padding}`;
 
   return (
@@ -55,12 +68,10 @@ export default function Navbar({ lang, handleLangChange, theme = "blend" }) {
       variants={navDrop} 
       className={navClasses}
     >
-      {/* w-full ensures it spans the entire width to the edges */}
       <div className="w-full flex justify-between items-center">
         
-        {/* --- LOGO SECTION (Fixed Visibility) --- */}
+        {/* --- LOGO SECTION --- */}
         <div className="text-2xl font-black tracking-tighter flex items-center gap-3 cursor-pointer" onClick={() => router.push('/')}>
-          {/* Added a white rounded box to make the dark blue/orange logo pop on dark backgrounds! */}
           <div className="bg-white p-1 rounded-lg shadow-sm flex items-center justify-center">
             <Image 
               src="/favicon.ico" 
@@ -77,12 +88,30 @@ export default function Navbar({ lang, handleLangChange, theme = "blend" }) {
         {/* --- MENU SECTION --- */}
         <div className="flex items-center gap-8 font-medium text-sm">
           <div className="hidden md:flex gap-6">
-            <button onClick={() => router.push('/')} className="hover:text-[#00c2a8] transition-colors relative group">{t.home}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span></button>
-            <button onClick={() => router.push('/about')} className="hover:text-[#00c2a8] transition-colors relative group">{t.about}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span></button>
-            <button onClick={() => router.push('/services')} className="hover:text-[#00c2a8] transition-colors relative group">{t.service}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span></button>
-            <button onClick={() => router.push('/column')} className="hover:text-[#00c2a8] transition-colors relative group">{t.column}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span></button>
-            <button onClick={() => router.push('/news')} className="hover:text-[#00c2a8] transition-colors relative group">{t.news}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span></button>
-            <button onClick={() => router.push('/contact')} className="hover:text-[#00c2a8] transition-colors relative group">{t.contact}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span></button>
+            <button onClick={() => router.push('/')} className="hover:text-[#00c2a8] transition-colors relative group">
+              {t.home}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span>
+            </button>
+            <button onClick={() => router.push('/individuals')} className="hover:text-[#00c2a8] transition-colors relative group">
+              {t.individuals}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span>
+            </button>
+            <button onClick={() => router.push('/companies')} className="hover:text-[#00c2a8] transition-colors relative group">
+              {t.companies}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span>
+            </button>
+            <button onClick={() => router.push('/submit')} className="hover:text-[#00c2a8] transition-colors relative group">
+              {t.submit}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span>
+            </button>
+            <button onClick={() => router.push('/about')} className="hover:text-[#00c2a8] transition-colors relative group">
+              {t.about}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span>
+            </button>
+            <button onClick={() => router.push('/contact')} className="hover:text-[#00c2a8] transition-colors relative group">
+              {t.contact}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00c2a8] transition-all group-hover:w-full"></span>
+            </button>
           </div>
           
           <select 
