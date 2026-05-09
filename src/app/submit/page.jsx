@@ -63,7 +63,7 @@ export default function SubmitPage() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-teal-300">
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
@@ -96,7 +96,7 @@ export default function SubmitPage() {
       </section>
 
       {/* --- CONTENT SECTION --- */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.h2 
             initial="hidden"
@@ -123,7 +123,7 @@ export default function SubmitPage() {
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true }} 
-            className="text-lg md:text-xl text-slate-600 leading-relaxed mb-16 italic whitespace-pre-line"
+            className="text-lg md:text-xl text-slate-950 leading-relaxed mb-16 italic whitespace-pre-line"
           >
             "{t.description}"
           </motion.p>
@@ -168,7 +168,7 @@ export default function SubmitPage() {
             animate={{ opacity: 1, scale: 1 }} 
             exit={{ opacity: 0, scale: 0 }} 
             onClick={scrollToTop} 
-            className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-lg hover:bg-teal-600 transition-colors z-[100] group"
+            className="fixed bottom-8 right-8 p-4 bg-[#2f6f6f] text-white rounded-full shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:bg-teal-600 transition-colors z-[100] group"
           >
             <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
           </motion.button>

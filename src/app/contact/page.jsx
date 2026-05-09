@@ -14,7 +14,7 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-// --- 1. UPDATED DICTIONARY (Privacy Removed) ---
+// --- 1. UPDATED DICTIONARY ---
 const dict = {
   en: {
     hero: { title: "CONTACT US", subtitle: "Get in touch with our team" },
@@ -27,6 +27,8 @@ const dict = {
       placeholderEmail: "blake@example.com",
       placeholderMessage: "Tell us about your career goals or recruitment needs...",
       submitBtn: "Send Message",
+      whatsappTitle: "Direct Support",
+      whatsappDesc: "Prefer a faster response? Chat directly with our consultants via WhatsApp for immediate assistance.",
       whatsappBtn: "Contact Via WhatsApp",
       sending: "Sending...",
     },
@@ -43,6 +45,8 @@ const dict = {
       placeholderEmail: "budi@email.com",
       placeholderMessage: "Ceritakan tentang tujuan karier atau kebutuhan rekrutmen Anda...",
       submitBtn: "Kirim Pesan",
+      whatsappTitle: "Dukungan Langsung",
+      whatsappDesc: "Ingin respon yang lebih cepat? Hubungi konsultan kami secara langsung melalui WhatsApp untuk bantuan segera.",
       whatsappBtn: "Hubungi Via WhatsApp",
       sending: "Mengirim...",
     },
@@ -59,6 +63,8 @@ const dict = {
       placeholderEmail: "yamada@example.com",
       placeholderMessage: "キャリアの目標や採用ニーズについてお聞かせください...",
       submitBtn: "メッセージを送信",
+      whatsappTitle: "ダイレクトサポート",
+      whatsappDesc: "より迅速な対応をご希望ですか？WhatsAppで当社のコンサルタントに直接チャットして、すぐにお手伝いいたします。",
       whatsappBtn: "WhatsAppで相談する",
       sending: "送信中...",
     },
@@ -76,7 +82,6 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Updated State: Privacy checkbox removed
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -122,7 +127,7 @@ export default function ContactPage() {
   const t = dict[lang];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-teal-300">
       
       {/* Success Notification */}
       <AnimatePresence>
@@ -164,7 +169,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent mb-16 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-teal-600 via-teal-950 to-cyan-500 bg-clip-text text-transparent mb-16 leading-tight"
           >
             {t.form.title}
           </motion.h2>
@@ -229,7 +234,6 @@ export default function ContactPage() {
                   ></textarea>
                 </div>
 
-                {/* Submit Button (Privacy Checkbox block removed) */}
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
@@ -257,9 +261,11 @@ export default function ContactPage() {
                 <div className="w-14 h-14 bg-teal-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-teal-200">
                   <MessageCircle size={30} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Direct Support</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">
+                  {t.form.whatsappTitle}
+                </h3>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Prefer a faster response? Chat directly with our consultants via WhatsApp for immediate assistance.
+                  {t.form.whatsappDesc}
                 </p>
                 <motion.a
                   href="https://wa.me/+6285860001198"
@@ -295,7 +301,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, scale: 1 }} 
             exit={{ opacity: 0, scale: 0 }} 
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-lg z-[100] hover:bg-teal-600 transition-colors"
+            className="fixed bottom-8 right-8 p-4 bg-[#2f6f6f] text-white rounded-full shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:bg-teal-600 transition-colors z-[100] group"
           >
             <ArrowUp size={24} />
           </motion.button>

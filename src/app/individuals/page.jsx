@@ -177,7 +177,7 @@ export default function ServicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-teal-300">
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
@@ -217,7 +217,7 @@ export default function ServicePage() {
       </section>
 
       {/* --- WHAT YOU NEED SECTION --- */}
-      <section className="py-24 bg-white backdrop-blur-md">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.h2 
             initial="hidden"
@@ -253,7 +253,7 @@ export default function ServicePage() {
       </section>
 
       {/* --- HOW WE SUPPORT SECTION --- */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div 
@@ -272,7 +272,7 @@ export default function ServicePage() {
                       </div>
                       <div>
                         <h4 className="font-bold text-lg text-slate-800">{item.title}</h4>
-                        <p className="text-slate-600">{item.desc}</p>
+                        <p className="text-slate-950">{item.desc}</p>
                       </div>
                     </div>
                     
@@ -327,7 +327,7 @@ export default function ServicePage() {
       </section>
 
       {/* --- FLOW SECTION (REFINED PATHWAY STYLE) --- */}
-      <section className="pt-24 pb-40 bg-slate-950 relative overflow-hidden">
+      <section className="pt-24 pb-40 bg-black/75 backdrop-blur-xl relative overflow-hidden">
         {/* Subtle background gradients for depth */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -457,7 +457,7 @@ export default function ServicePage() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-lg hover:bg-teal-600 transition-colors z-[100] group"
+            className="fixed bottom-8 right-8 p-4 bg-[#2f6f6f] text-white rounded-full shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:bg-teal-600 transition-colors z-[100] group"
           >
             <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
           </motion.button>

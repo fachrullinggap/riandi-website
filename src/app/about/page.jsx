@@ -92,11 +92,11 @@ export default function AboutPage() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-teal-300">
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="solid" />
 
       {/* --- OPENING SECTION (LEFT TEXT + RIGHT IMAGE) --- */}
-      <section className="pt-32 pb-24 px-6 bg-slate-50">
+      <section className="pt-32 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT: TEXT */}
@@ -108,7 +108,7 @@ export default function AboutPage() {
             >
               <motion.p
                 variants={fadeUp}
-                className="text-teal-600 font-black tracking-widest uppercase mb-12 text-sm"
+                className="text-teal-950 font-black tracking-widest uppercase mb-12 text-3xl"
               >
                 {t.label}
               </motion.p>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 variants={fadeUp}
                 className="border-l-4 border-teal-500 pl-6"
               >
-                <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-xl font-medium">
+                <p className="text-xl md:text-2xl text-slate-900 leading-relaxed max-w-xl font-medium">
                   {t.opening}
                 </p>
               </motion.div>
@@ -146,7 +146,7 @@ export default function AboutPage() {
       </section>
 
       {/* --- FOUNDER STORY SECTION --- */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-black/30 backdrop-blur-x2">
         <div className="max-w-3xl mx-auto">
           <motion.h2 
             initial="hidden"
@@ -173,7 +173,7 @@ export default function AboutPage() {
       </section>
 
       {/* --- POSITIONING SECTION --- */}
-      <section className="py-24 px-6 bg-slate-50">
+      <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.h2 
             initial="hidden"
@@ -220,7 +220,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, scale: 1 }} 
             exit={{ opacity: 0, scale: 0 }} 
             onClick={scrollToTop} 
-            className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-lg hover:bg-teal-600 transition-colors z-[100] group"
+            className="fixed bottom-8 right-8 p-4 bg-[#2f6f6f] text-white rounded-full shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:bg-teal-600 transition-colors z-[100] group"
           >
             <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
           </motion.button>

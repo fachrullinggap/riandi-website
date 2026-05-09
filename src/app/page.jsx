@@ -31,7 +31,7 @@ const dict = {
     services: { 
       title: "Services",
       indTitle: "For Individuals", 
-      indDesc: "Guidance and preparation to help you build your path toward working in Japan — from learning the language to understanding real career steps.",
+      indDesc: "Guidance and preparation to help you build your path toward working in Japan from learning the language to understanding real career steps.",
       compTitle: "For Companies", 
       compDesc: "Support in communication and connecting with individuals who are preparing to build their careers related to Japan."
     },
@@ -67,7 +67,7 @@ const dict = {
     services: { 
       title: "Layanan",
       indTitle: "Untuk Individu", 
-      indDesc: "Bimbingan dan persiapan untuk membantu Anda membangun jalur bekerja di Jepang — mulai dari belajar bahasa hingga memahami langkah karier yang nyata.",
+      indDesc: "Bimbingan dan persiapan untuk membantu Anda membangun jalur bekerja di Jepang mulai dari belajar bahasa hingga memahami langkah karier yang nyata.",
       compTitle: "Untuk Perusahaan", 
       compDesc: "Dukungan komunikasi dan menghubungkan perusahaan dengan individu yang sedang bersiap membangun karier terkait Jepang."
     },
@@ -166,17 +166,17 @@ export default function ReimaginedLandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300 overflow-x-hidden relative">
+    <div className="min-h-screen text-slate-800 font-sans selection:bg-teal-200 overflow-x-hidden relative">
       
       {/* --- NAVBAR --- */}
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-950 pb-20">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black/40 backdrop-blur-[2px] pb-20">
         <motion.div initial={{ scale: 1.1, opacity: 0 }} animate={{ scale: 1, opacity: 0.4 }} transition={{ duration: 1.5, ease: "easeOut" }} className="absolute inset-0">
           <Image src="/fuji-sakura.jpg" alt="City Background" fill className="object-cover mix-blend-luminosity" priority />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-[#f5e9d7]/10" />
         
         <motion.div className="relative z-10 text-center max-w-5xl px-6 flex flex-col items-center" variants={containerVariants} initial="hidden" animate="visible">
           <motion.h1 variants={springUp} className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight mb-8">
@@ -224,9 +224,9 @@ export default function ReimaginedLandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 80, damping: 20 }}
-            className="bg-white rounded-[2rem] p-10 shadow-xl border border-slate-100 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300 group"
+            className="bg-white/65 backdrop-blur-xl rounded-[2rem] p-10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/40 flex flex-col items-start hover:-translate-y-2 transition-all duration-300 group"
           >
-            <div className="w-16 h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:text-white transition-all duration-300">
+            <div className="w-16 h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#3f8a8a] group-hover:text-white transition-all duration-300">
               <User size={32} />
             </div>
             <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight">{t.split.indTitle}</h3>
@@ -235,7 +235,7 @@ export default function ReimaginedLandingPage() {
             </p>
             <button 
               onClick={() => router.push('/individuals')} 
-              className="px-6 py-3 bg-slate-100 text-teal-600 hover:bg-teal-500 hover:text-white rounded-full font-bold transition-colors flex items-center gap-2 w-full justify-center"
+              className="px-6 py-3 bg-slate-100 text-teal-600 hover:bg-[#3f8a8a] hover:text-white rounded-full font-bold transition-colors flex items-center gap-2 w-full justify-center"
             >
               {t.split.indBtn} <ArrowUpRight size={18} />
             </button>
@@ -247,9 +247,9 @@ export default function ReimaginedLandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.1 }}
-            className="bg-slate-900 rounded-[2rem] p-10 shadow-2xl border border-slate-800 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300 group"
+            className="bg-slate-900/75 backdrop-blur-xl rounded-[2rem] p-10 shadow-[0_8px_32px_rgba(0,0,0,0.25)] border border-white/10 flex flex-col items-start hover:-translate-y-2 transition-all duration-300 group"
           >
-            <div className="w-16 h-16 bg-white/10 text-teal-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:text-white transition-all duration-300">
+            <div className="w-16 h-16 bg-white/10 text-teal-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#3f8a8a] group-hover:text-white transition-all duration-300">
               <Building size={32} />
             </div>
             <h3 className="text-3xl font-black text-white mb-4 tracking-tight">{t.split.compTitle}</h3>
@@ -258,7 +258,7 @@ export default function ReimaginedLandingPage() {
             </p>
             <button 
               onClick={() => router.push('/companies')} 
-              className="px-6 py-3 bg-slate-800 text-white hover:bg-teal-500 rounded-full font-bold transition-colors flex items-center gap-2 w-full justify-center"
+              className="px-6 py-3 bg-slate-800 text-white hover:bg-[#2f6f6f] rounded-full font-bold transition-colors flex items-center gap-2 w-full justify-center"
             >
               {t.split.compBtn} <ArrowUpRight size={18} />
             </button>
@@ -271,7 +271,7 @@ export default function ReimaginedLandingPage() {
       <section className="pt-0 pb-24 px-6 max-w-7xl mx-auto -mt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-0 mt-0">
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <p className="text-xl md:text-2xl text-slate-800 font-medium leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#4b4038] font-medium leading-relaxed">
               {t.services.indDesc}
             </p>
           </motion.div>
@@ -286,7 +286,7 @@ export default function ReimaginedLandingPage() {
       {/* --- PLATFORMS SECTION --- */}
       <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900">{t.platforms.title}</h2>
+          <h2 className="text-4xl md:text-5xl font-black text-[#3d342d]">{t.platforms.title}</h2>
           <div className="w-24 h-1 bg-teal-500 mx-auto mt-6 rounded-full"></div>
         </motion.div>
 
@@ -296,7 +296,7 @@ export default function ReimaginedLandingPage() {
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
-            className="bg-slate-900 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group" 
+            className="bg-black/40 backdrop-blur-xl rounded-[2rem] shadow-xl border border-white/10 flex flex-col justify-end relative overflow-hidden group"
           >
             <Image src="/career-guidance.png" alt="Career Placement" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/30 transition-colors duration-500" /> 
@@ -314,7 +314,7 @@ export default function ReimaginedLandingPage() {
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
-            className="bg-slate-900 rounded-[2rem] shadow-xl flex flex-col justify-end relative overflow-hidden group"
+            className="bg-black/40 backdrop-blur-xl rounded-[2rem] shadow-xl border border-white/10 flex flex-col justify-end relative overflow-hidden group"
           >
             <Image src="/languange-training.png" alt="Language Academy" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gray-600/65 group-hover:bg-gray-600/45 transition-colors duration-500" /> 
@@ -332,7 +332,7 @@ export default function ReimaginedLandingPage() {
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
-            className="bg-teal-50 rounded-[2rem] shadow-sm border border-teal-100 flex flex-col justify-end relative overflow-hidden group"
+            className="bg-white/40 backdrop-blur-xl rounded-[2rem] shadow-xl border border-white/30 flex flex-col justify-end relative overflow-hidden group"
           >
             <Image src="/interpreter-communication.png" alt="Interpreter" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-teal-50/65 group-hover:bg-teal-50/45 transition-colors duration-500" /> 
@@ -351,7 +351,7 @@ export default function ReimaginedLandingPage() {
       </section>
 
       {/* --- NEW FLOW SECTION --- */}
-      <section className="py-24 px-6 bg-slate-900 relative overflow-hidden">
+      <section className="py-24 px-6 bg-black/50 backdrop-blur-xl relative overflow-hidden border-y border-white/10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -418,7 +418,7 @@ export default function ReimaginedLandingPage() {
                 transition={{ duration: 0.5, delay: idx * 0.3 }}
                 className="relative z-10 flex flex-col items-center group w-full md:w-1/4"
               >
-                <div className="w-24 h-24 bg-slate-800 border-4 border-slate-900 text-teal-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:border-teal-400 group-hover:text-white transition-all duration-300 shadow-2xl">
+                <div className="w-24 h-24 bg-slate-800 border-4 border-slate-900 text-teal-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#3f8a8a] group-hover:border-teal-400 group-hover:text-white transition-all duration-300 shadow-2xl">
                   <step.icon size={32} />
                 </div>
                 <h3 className="text-xl font-bold text-white text-center bg-slate-900 px-4 md:px-2 py-1 rounded-lg">
@@ -441,7 +441,7 @@ export default function ReimaginedLandingPage() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 p-4 bg-teal-500 text-white rounded-full shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:bg-teal-600 transition-colors z-[100] group"
+            className="fixed bottom-8 right-8 p-4 bg-[#2f6f6f] text-white rounded-full shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:bg-teal-600 transition-colors z-[100] group"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
