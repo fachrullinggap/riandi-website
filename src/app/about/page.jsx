@@ -16,9 +16,9 @@ import Footer from "../../components/Footer";
 const dict = {
   en: {
     label: "ABOUT US",
-    opening: "Bridging the gap between talent and opportunities related to Japan requires more than connection — it requires understanding.",
-    founderTitle: "Founder Story",
-    founderStory: "With firsthand experience working in Japan, JaLink understands both sides — what companies expect, and what individuals need to prepare.",
+    opening: "Bridging the gap between talent and opportunity in Japan requires more than connection, it requires understanding. JaLink provides that bridge through real experience and structured guidance.",
+    founderTitle: "Our Approach",
+    founderStory: "Building a career related to Japan requires more than opportunity, it requires clarity, preparation, and understanding. Many individuals face uncertainty when starting their journey, while companies often seek individuals who are not only skilled, but also prepared for the working environment. JaLink focuses on bridging this gap through structured guidance, practical preparation, and support in communication. By focusing on both sides, the process becomes clearer, more efficient, and more aligned.",
     positioningTitle: "Positioning",
     positioning: [
       { icon: Lightbulb, label: "Real experience" },
@@ -28,9 +28,9 @@ const dict = {
   },
   id: {
     label: "TENTANG KAMI",
-    opening: "Menjembatani kesenjangan antara talenta dan peluang terkait Jepang membutuhkan lebih dari sekadar koneksi — membutuhkan pemahaman.",
-    founderTitle: "Kisah Pendiri",
-    founderStory: "Dengan pengalaman langsung bekerja di Jepang, JaLink memahami kedua belah pihak — apa yang diharapkan perusahaan, dan apa yang perlu disiapkan individu.",
+    opening: "Menjembatani kesenjangan antara talenta dan peluang di Jepang membutuhkan lebih dari sekadar koneksi; ia membutuhkan pemahaman mendalam. JaLink hadir sebagai jembatan tersebut melalui pengalaman nyata dan bimbingan yang terstruktur.",
+    founderTitle: "Pendekatan Kami",
+    founderStory: "Membangun karier yang berkaitan dengan Jepang membutuhkan lebih dari sekadar kesempatan dibutuhkan kejelasan, persiapan, dan pemahaman. Banyak individu menghadapi ketidakpastian saat memulai perjalanan mereka, sementara perusahaan sering mencari individu yang tidak hanya terampil, tetapi juga siap menghadapi lingkungan kerja. JaLink berfokus pada menjembatani kesenjangan ini melalui bimbingan terstruktur, persiapan praktis, dan dukungan dalam komunikasi. Dengan berfokus pada kedua belah pihak, prosesnya menjadi lebih jelas, lebih efisien, dan lebih selaras.",
     positioningTitle: "Positioning",
     positioning: [
       { icon: Lightbulb, label: "Pengalaman nyata" },
@@ -40,9 +40,9 @@ const dict = {
   },
   ja: {
     label: "アバウト",
-    opening: "日本に関連する人材と機会のギャップを埋めるには、単なる接続以上のもの — 理解が必要です。",
-    founderTitle: "創業者の物語",
-    founderStory: "日本での実務経験を持つJaLinkは、両側を理解しています — 企業の期待と、個人が準備する必要があることを。",
+    opening: "日本に関連する人材と機会のギャップを埋めるには、単なる接続以上のもの 理解が必要です。Jalinkは、実際の経験と構造化されたガイダンスを通じて、その架け橋を提供します。",
+    founderTitle: "私たちのアプローチ",
+    founderStory: "日本に関連するキャリアを築くには、機会があるだけでは不十分です。明確さ、準備、そして理解が必要です。多くの人が歩み始める際に不安を抱えている一方で、企業はスキルがあるだけでなく、職場環境にも対応できる人材を求めています。JaLinkは、体系的なガイダンス、実践的な準備、そしてコミュニケーション支援を通じて、このギャップを埋めることに注力しています。双方に寄り添うことで、プロセスはより明確に、より効率的に、そしてより整合性のあるものになります。",
     positioningTitle: "ポジショニング",
     positioning: [
       { icon: Lightbulb, label: "実体験" },
@@ -133,7 +133,7 @@ export default function AboutPage() {
             >
               <div className="relative w-full aspect-4/3 rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white">
                 <Image
-                  src="https://picsum.photos/seed/workspace/800/600"
+                  src="/about-us.png"
                   alt="About Us"
                   fill
                   className="object-cover"

@@ -10,18 +10,19 @@ import {
   Globe, 
   Users, 
   ArrowUp, 
-  ExternalLink 
+  ExternalLink,
+  Mail // Added Mail icon
 } from "lucide-react";
 import Image from "next/image";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-// --- 1. UPDATED DICTIONARY FOR COMPANIES ---
+// --- 1. UPDATED DICTIONARY ---
 const dict = {
   en: {
     hero: { title: "FOR COMPANIES"},
-    opening: "Finding the right individuals requires more than recruitment — it requires preparation and understanding.",
+    opening: "Finding the right individuals requires more than recruitment it requires preparation and understanding.",
     supportTitle: "What We Support",
     supportItems: [
       { icon: Users, label: "Candidate preparation" },
@@ -36,12 +37,13 @@ const dict = {
     ],
     cta: {
       text: "Ready to expand your team?",
-      btn: "Find Talent",
+      btnSubmit: "Submit Job Details", // New label
+      btnConsult: "Consult With Us",   // New label
     },
   },
   id: {
     hero: { title: "UNTUK PERUSAHAAN"},
-    opening: "Menemukan individu yang tepat membutuhkan lebih dari sekadar rekrutmen — ini membutuhkan persiapan dan pemahaman.",
+    opening: "Menemukan individu yang tepat membutuhkan lebih dari sekadar rekrutmen ini membutuhkan persiapan dan pemahaman.",
     supportTitle: "Apa yang Kami Dukung",
     supportItems: [
       { icon: Users, label: "Persiapan kandidat" },
@@ -56,7 +58,8 @@ const dict = {
     ],
     cta: {
       text: "Siap mengembangkan tim Anda?",
-      btn: "Cari Talenta",
+      btnSubmit: "Kirim Detail Pekerjaan", // New label
+      btnConsult: "Konsultasi Dengan Kami", // New label
     },
   },
   ja: {
@@ -76,15 +79,13 @@ const dict = {
     ],
     cta: {
       text: "チームを拡大する準備はできましたか？",
-      btn: "人材を探す",
+      btnSubmit: "求人詳細を送信", // New label
+      btnConsult: "ご相談はこちら",  // New label
     },
   }
 };
 
 // --- Animation Variants ---
-const letterVariants = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } } };
-const wordVariants = { hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 100, damping: 15 } } };
-const containerStagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } };
 const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 15 } } };
 
 export default function CompaniesPage() {
@@ -118,59 +119,20 @@ export default function CompaniesPage() {
 
       {/* --- HERO SECTION --- */}
       <section className="pt-32 pb-24 px-6 bg-slate-900 min-h-[60vh] flex flex-col justify-center rounded-b-[3rem] relative overflow-hidden">
-        <div className="absolute inset-0"></div>
         <div className="max-w-4xl mx-auto w-full relative z-10 text-center">
-          
-          {/* Logo Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex justify-center mb-8"
-          >
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="flex justify-center mb-8">
             <div className="w-16 h-16 bg-teal-900/60 text-teal-400 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(20,184,166,0.15)]">
               <Building size={32} strokeWidth={2.5} />
             </div>
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-black text-white tracking-widest mb-2"
-          >
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-6xl font-black text-white tracking-widest mb-2">
             {t.hero.title}
           </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-teal-400 text-lg md:text-xl font-medium tracking-widest mb-6"
-          >
-            {t.hero.subtitle}
-          </motion.p>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-teal-400 text-xl md:text-2xl font-medium leading-relaxed"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-teal-400 text-xl md:text-2xl font-medium leading-relaxed">
             "{t.opening}"
           </motion.p>
-          
-          <div className="w-24 h-px bg-slate-700 mx-auto mt-8"></div>
         </div>
       </section>
-
-      {/* --- OPENING QUOTE --- */}
-      {/* <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-2xl md:text-3xl font-medium text-slate-700 italic leading-relaxed">
-            “{t.opening}”
-          </motion.p>
-        </div>
-      </section> */}
 
       {/* --- WHAT WE SUPPORT --- */}
       <section className="py-16 px-6 bg-slate-50">
@@ -206,27 +168,45 @@ export default function CompaniesPage() {
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="w-full md:w-1/2 relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl">
-            <Image src="https://picsum.photos/seed/companywork/800/600" fill className="object-cover" alt="How we work" />
+            <Image src="/how-we-work.png" fill className="object-cover" alt="How we work" />
           </motion.div>
         </div>
       </section>
 
-      {/* --- CTA SECTION --- */}
+      {/* --- UPDATED CTA SECTION --- */}
       <section className="py-32 px-6 bg-slate-900 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-teal-500/5 pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.h3 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-3xl md:text-5xl font-black text-white mb-10">
             {t.cta.text}
           </motion.h3>
-          <motion.a 
-            href="https://wa.me/+6285860001198" 
-            target="_blank"
-            whileHover={{ scale: 1.05 }} 
-            whileTap={{ scale: 0.95 }} 
-            className="inline-flex items-center gap-3 px-12 py-6 bg-teal-500 hover:bg-teal-400 text-white font-black rounded-2xl text-xl transition-all shadow-lg shadow-teal-500/20"
-          >
-            {t.cta.btn} <ExternalLink size={24} />
-          </motion.a>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            {/* 1) Submit Job Details Button */}
+            <motion.a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf4NP9JKvvGY7Z-V0hX2H64NH1w90IK1TwsL73CO2ygnyKAAQ/viewform" 
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }} 
+              className="inline-flex items-center gap-3 px-10 py-5 bg-teal-500 hover:bg-teal-400 text-white font-black rounded-2xl text-lg md:text-xl transition-all shadow-lg shadow-teal-500/20 w-full sm:w-auto justify-center"
+            >
+              {t.cta.btnSubmit} <ExternalLink size={24} />
+            </motion.a>
+
+            {/* 2) Consult With Us Button */}
+            <motion.a 
+              // Direct Gmail Compose Link (Fixed syntax)
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=jalink.connect@gmail.com&su=Inquiry%20from%20Company"
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }} 
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white hover:bg-slate-100 text-slate-900 font-black rounded-2xl text-lg md:text-xl transition-all shadow-lg w-full sm:w-auto justify-center"
+            >
+              <Mail size={24} /> {t.cta.btnConsult}
+            </motion.a>
+          </div>
         </div>
       </section>
 

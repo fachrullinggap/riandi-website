@@ -18,6 +18,7 @@ import {
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { FaWhatsapp } from "react-icons/fa";
 
 // --- 1. UPDATED DICTIONARY ---
 // --- 1. UPDATED DICTIONARY WITH ID & JA ---
@@ -36,7 +37,7 @@ const dict = {
     supportItems: [
       { 
         title: "Career Guidance", 
-        desc: "JaLink Career / Rianer acts as your personal guide through every step of the process.",
+        desc: "JaLink Career / Rianer is your personal guide through every step of the process.",
         icon: Briefcase 
       },
       { 
@@ -45,6 +46,7 @@ const dict = {
         icon: BookOpen 
       },
     ],
+    whatsappConsultation: "WhatsApp Consultation",
     pricingBtn: "View Program & Pricing",
     flowTitle: "Flow",
     flow: [
@@ -72,7 +74,7 @@ const dict = {
     supportItems: [
       { 
         title: "Bimbingan Karier", 
-        desc: "JaLink Career / Rianer bertindak sebagai panduan pribadi Anda melalui setiap langkah proses.",
+        desc: "JaLink Career / Rianer adalah panduan pribadi Anda melalui setiap langkah proses.",
         icon: Briefcase 
       },
       { 
@@ -81,6 +83,7 @@ const dict = {
         icon: BookOpen 
       },
     ],
+    whatsappConsultation: "Konsultasi WhatsApp",
     pricingBtn: "Lihat Program & Harga",
     flowTitle: "Alur",
     flow: [
@@ -108,7 +111,7 @@ const dict = {
     supportItems: [
       { 
         title: "キャリアガイダンス", 
-        desc: "JaLink Career / Rianerが、プロセスの各ステップであなたのパーソナルガイドを務めます。",
+        desc: "JaLink Career / Rianerは、プロセスの各ステップであなたのパーソナルガイドを務めます。",
         icon: Briefcase 
       },
       { 
@@ -117,6 +120,7 @@ const dict = {
         icon: BookOpen 
       },
     ],
+    whatsappConsultation: "WhatsApp相談",
     pricingBtn: "プログラムと料金を見る",
     flowTitle: "プロセス",
     flow: [
@@ -173,7 +177,7 @@ export default function ServicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-teal-300">
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
@@ -213,7 +217,7 @@ export default function ServicePage() {
       </section>
 
       {/* --- WHAT YOU NEED SECTION --- */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6">
           <motion.h2 
             initial="hidden"
@@ -261,27 +265,48 @@ export default function ServicePage() {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{t.supportTitle}</h2>
               <div className="space-y-8 mb-10">
                 {t.supportItems.map((item, idx) => (
-                  <div key={idx} className="flex gap-5">
-                    <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center text-teal-600 shadow-sm">
-                      <item.icon size={24} />
+                  <div key={idx}>
+                    <div className="flex gap-5">
+                      <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center text-teal-600 shadow-sm">
+                        <item.icon size={24} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg text-slate-800">{item.title}</h4>
+                        <p className="text-slate-600">{item.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-lg text-slate-800">{item.title}</h4>
-                      <p className="text-slate-600">{item.desc}</p>
-                    </div>
+                    
+                    {/* WhatsApp Button - After first item */}
+                    {idx === 0 && (
+                      <motion.a
+                        href="https://wa.me/+6285860001198"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(37, 211, 102, 0.3)" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-3 mt-6 ml-16 px-6 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold rounded-full transition-all shadow-lg"
+                      >
+                        <FaWhatsapp size={20} />
+                        {t.whatsappConsultation}
+                      </motion.a>
+                    )}
+                    
+                    {/* View Program & Pricing Button - After second item */}
+                    {idx === 1 && (
+                      <motion.a
+                        href="https://docs.google.com/presentation/d/1edHZ5KmqhtwSkM72azOu49nBguUb1uMX/edit?usp=sharing&ouid=101725661368008031851&rtpof=true&sd=true"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(20, 184, 166, 0.3)" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-3 mt-6 ml-16 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-full transition-all shadow-lg"
+                      >
+                        {t.pricingBtn} <ExternalLink size={20} />
+                      </motion.a>
+                    )}
                   </div>
                 ))}
               </div>
-              <motion.a
-                href="https://docs.google.com/document/d/example-dummy-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-2xl transition-colors shadow-lg shadow-teal-600/20"
-              >
-                {t.pricingBtn} <ExternalLink size={20} />
-              </motion.a>
             </motion.div>
             
             <motion.div 
@@ -291,7 +316,7 @@ export default function ServicePage() {
               className="flex-1 relative w-full h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white"
             >
               <Image 
-                src="https://picsum.photos/seed/support/800/600" 
+                src="/individu-support.jpg" 
                 alt="Support" 
                 fill 
                 className="object-cover"
@@ -398,11 +423,12 @@ export default function ServicePage() {
       {/* --- CTA BANNER --- */}
       <section className="py-32 bg-gradient-to-br from-teal-700 to-teal-900 text-white relative overflow-hidden">
         {/* Decorative divider to bridge the gap from the dark flow section */}
-        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-950 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-950 to-transparent z-10"></div>
         
-        <div className="absolute top-0 right-0 w-full h-full bg-[url('https://picsum.photos/seed/pattern2/1920/1080')] opacity-10 mix-blend-overlay"></div>
+        {/* --- UPDATED BACKGROUND DIV --- */}
+        <div className="absolute inset-0 w-full h-full bg-[url('/bg-start-your-journey.png')] bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay"></div>
         
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 mt-10">
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-20 mt-10">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

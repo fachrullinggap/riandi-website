@@ -9,17 +9,17 @@ import Image from "next/image";
 // --- FOOTER DICTIONARY ---
 const footerDict = {
   en: {
-    contactBox: { inquire: "Please feel free to inquire.", hours: "Hours: 10:00 - 19:00 [excluding weekends & holidays]" },
+    contactBox: { inquire: "Please feel free to inquire.", hours: "Hours: 08:00 - 17:00 [excluding weekends & holidays]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
     footer: { address: "DKI Jakarta, South Jakarta", rights: "© 2026 JaLink" }
   },
   id: {
-    contactBox: { inquire: "Silakan hubungi kami.", hours: "Jam Kerja: 10:00 - 19:00 [kecuali akhir pekan & hari libur]" },
+    contactBox: { inquire: "Silakan hubungi kami.", hours: "Jam Kerja: 08:00 - 17:00 [kecuali akhir pekan & hari libur]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
     footer: { address: "DKI Jakarta, South Jakarta", rights: "© 2026 JaLink" }
   },
   ja: {
-    contactBox: { inquire: "お気軽にお問い合わせください。", hours: "受付時間 10:00-19:00 [ 土・日・祝日除く ]" },
+    contactBox: { inquire: "お気軽にお問い合わせください。", hours: "受付時間 08:00-17:00 [ 土・日・祝日除く ]" },
     socials: { fb: "Facebook", insta: "Instagram", li: "Linkedin" },
     footer: { address: "ジャカルタ支店：南ジャカルタ", rights: "© 2026 JaLink" }
   }
@@ -76,7 +76,7 @@ export default function Footer({ lang }) {
             <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-teal-500">
                <Mail size={20} />
             </div>
-            <span className="text-xl font-bold text-slate-200">rint.jp23@gmail.com</span>
+            <span className="text-xl font-bold text-slate-200">jalink.connect@gmail.com</span>
           </div>
 
           <p className="text-xs text-slate-500 font-medium tracking-wider mt-2">{t.contactBox.hours}</p>
@@ -84,18 +84,12 @@ export default function Footer({ lang }) {
 
         {/* SOCIAL MEDIA GRID */}
         <motion.div variants={fadeUp}>
-          <div className="grid grid-cols-2 gap-4 auto-rows-[90px]">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#1877F2] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
-              <FaFacebook className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.fb}</span>
+          <div className="grid grid-cols-2 gap-6 auto-rows-[120px]">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-3 bg-[#E1306C] text-white rounded-2xl group hover:-translate-y-2 transition-all shadow-lg hover:shadow-xl">
+              <FaInstagram className="w-8 h-8 group-hover:scale-120 transition-transform" /> <span className="text-base font-bold">{t.socials.insta}</span>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#E1306C] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
-              <FaInstagram className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.insta}</span>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#0077B5] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
-              <FaLinkedin className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">{t.socials.li}</span>
-            </a>
-            <a href="https://wa.me/+6285860001198" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-2 bg-[#25D366] text-white rounded-2xl group hover:-translate-y-1 transition-all shadow-sm">
-              <FaWhatsapp className="w-7 h-7 group-hover:scale-110 transition-transform" /> <span className="text-sm font-semibold">WhatsApp</span>
+            <a href="https://wa.me/+6285860001198" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-3 bg-[#25D366] text-white rounded-2xl group hover:-translate-y-2 transition-all shadow-lg hover:shadow-xl">
+              <FaWhatsapp className="w-8 h-8 group-hover:scale-120 transition-transform" /> <span className="text-base font-bold">WhatsApp</span>
             </a>
           </div>
         </motion.div>

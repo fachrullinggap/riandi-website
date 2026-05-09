@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Indonesia - Japan Riandi Agency",
-  description: "Riandi Agency Connect Indonesia & Japan",
+  title: "JALINK ACADEMY",
+  description:
+    "Master Japanese from Zero with Guided Lessons, and Build Your Future Career in Japan.",
 };
 
 export default function RootLayout({ children }) {
@@ -22,7 +24,28 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="relative min-h-screen overflow-x-hidden">
+        
+        {/* Background Image */}
+        <div className="fixed inset-0 -z-10">
+          <Image
+            src="/background.png"
+            alt="Japanese Background"
+            fill
+            priority
+            className="object-cover blur-[2px] brightness-45"
+          />
+
+          {/* Soft Overlay */}
+          <div className="absolute inset-0 bg-[#f5e9d7]/60" />
+        </div>
+
+        {/* Website Content */}
+        <main className="relative z-10">
+          {children}
+        </main>
+
+      </body>
     </html>
   );
 }

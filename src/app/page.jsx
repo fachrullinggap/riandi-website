@@ -16,7 +16,7 @@ const dict = {
   en: {
     hero: { 
       title: "Finding Your Way to Japan", 
-      desc: "For talents building their careers — and companies seeking the right people.", 
+      desc: "For talents building their careers and companies seeking the right people.", 
       ctaInd: "I'm Looking for a Job", 
       ctaComp: "I'm Hiring Talent" 
     },
@@ -52,7 +52,7 @@ const dict = {
   id: {
     hero: { 
       title: "Menemukan Jalan Anda ke Jepang", 
-      desc: "Untuk talenta yang membangun karier mereka — dan perusahaan yang mencari orang yang tepat.", 
+      desc: "Untuk talenta yang membangun karier mereka dan perusahaan yang mencari orang yang tepat.", 
       ctaInd: "Saya Mencari Pekerjaan", 
       ctaComp: "Saya Mencari Talenta" 
     },
@@ -174,7 +174,7 @@ export default function ReimaginedLandingPage() {
       {/* --- HERO SECTION --- */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-950 pb-20">
         <motion.div initial={{ scale: 1.1, opacity: 0 }} animate={{ scale: 1, opacity: 0.4 }} transition={{ duration: 1.5, ease: "easeOut" }} className="absolute inset-0">
-          <Image src="https://picsum.photos/seed/cityscape/1920/1080" alt="City Background" fill className="object-cover mix-blend-luminosity" priority />
+          <Image src="/fuji-sakura.jpg" alt="City Background" fill className="object-cover mix-blend-luminosity" priority />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
         
@@ -268,16 +268,14 @@ export default function ReimaginedLandingPage() {
       </section>
 
       {/* --- SERVICES (SIMPLIFIED) SECTION --- */}
-      <section className="pt-12 pb-24 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-slate-200 pt-16 mt-8">
+      <section className="pt-0 pb-24 px-6 max-w-7xl mx-auto -mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-0 mt-0">
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <div className="text-teal-600 font-bold mb-2 uppercase tracking-widest text-sm">{t.services.indTitle}</div>
             <p className="text-xl md:text-2xl text-slate-800 font-medium leading-relaxed">
               {t.services.indDesc}
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <div className="text-teal-600 font-bold mb-2 uppercase tracking-widest text-sm">{t.services.compTitle}</div>
             <p className="text-xl md:text-2xl text-slate-800 font-medium leading-relaxed">
               {t.services.compDesc}
             </p>
@@ -294,14 +292,32 @@ export default function ReimaginedLandingPage() {
 
         <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
           
-          {/* Platform 1: JaLink Academy */}
+          {/* Platform 1: JaLink Career */}
+          <motion.div 
+            variants={springUp} 
+            whileHover={{ y: -6 }} 
+            className="bg-slate-900 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group" 
+          >
+            <Image src="/career-guidance.png" alt="Career Placement" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/30 transition-colors duration-500" /> 
+            
+            <div className="relative z-20 mt-auto p-8">
+              <div className="w-12 h-12 bg-teal-500/20 backdrop-blur-md text-teal-400 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <Briefcase size={24} />
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-white">{t.platforms.p3Title}</h3>
+              <p className="text-slate-300 text-sm font-bold tracking-wide">{t.platforms.p3Desc}</p>
+            </div>
+          </motion.div>
+
+          {/* Platform 2: JaLink Academy */}
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
             className="bg-slate-900 rounded-[2rem] shadow-xl flex flex-col justify-end relative overflow-hidden group"
           >
-            <Image src="https://picsum.photos/seed/classroom/800/800" alt="Language Academy" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-slate-950/85 group-hover:bg-slate-950/75 transition-colors duration-500" /> 
+            <Image src="/languange-training.png" alt="Language Academy" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gray-600/65 group-hover:bg-gray-600/45 transition-colors duration-500" /> 
             
             <div className="relative z-20 p-8">
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-xl flex items-center justify-center mb-5 group-hover:-rotate-12 transition-transform duration-300">
@@ -312,14 +328,14 @@ export default function ReimaginedLandingPage() {
             </div>
           </motion.div>
 
-          {/* Platform 2: Kakehashi by JaLink */}
+          {/* Platform 3: Kakehashi by JaLink */}
           <motion.div 
             variants={springUp} 
             whileHover={{ y: -6 }} 
             className="bg-teal-50 rounded-[2rem] shadow-sm border border-teal-100 flex flex-col justify-end relative overflow-hidden group"
           >
-            <Image src="https://picsum.photos/seed/meeting/800/800" alt="Interpreter" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-teal-50/90 group-hover:bg-teal-50/80 transition-colors duration-500" /> 
+            <Image src="/interpreter-communication.png" alt="Interpreter" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-teal-50/65 group-hover:bg-teal-50/45 transition-colors duration-500" /> 
             
             <div className="absolute top-6 right-6 w-12 h-12 bg-white text-teal-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 z-20">
               <Languages size={24} />
@@ -328,24 +344,6 @@ export default function ReimaginedLandingPage() {
             <div className="relative z-20 mt-auto p-8">
               <h3 className="text-2xl font-bold mb-2 text-teal-950 leading-tight">{t.platforms.p2Title}</h3>
               <p className="text-teal-700 text-sm font-bold tracking-wide">{t.platforms.p2Desc}</p>
-            </div>
-          </motion.div>
-
-          {/* Platform 3: JaLink Career */}
-          <motion.div 
-            variants={springUp} 
-            whileHover={{ y: -6 }} 
-            className="bg-slate-900 rounded-[2rem] shadow-md border border-slate-100 flex flex-col justify-end relative overflow-hidden group" 
-          >
-            <Image src="https://picsum.photos/seed/businessjob/1200/800" alt="Career Placement" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-slate-950/80 group-hover:bg-slate-950/70 transition-colors duration-500" /> 
-            
-            <div className="relative z-20 mt-auto p-8">
-              <div className="w-12 h-12 bg-teal-500/20 backdrop-blur-md text-teal-400 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <Briefcase size={24} />
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-white">{t.platforms.p3Title}</h3>
-              <p className="text-slate-300 text-sm font-bold tracking-wide">{t.platforms.p3Desc}</p>
             </div>
           </motion.div>
 
@@ -370,19 +368,32 @@ export default function ReimaginedLandingPage() {
 
           <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-4 px-4">
             
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-[48px] left-[12%] right-[12%] h-1 bg-slate-800 rounded-full z-0">
-               <motion.div 
-                 initial={{ width: 0 }} 
-                 whileInView={{ width: "100%" }} 
-                 viewport={{ once: true }} 
-                 transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }} 
-                 className="h-full bg-teal-500 rounded-full" 
-               />
-            </div>
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden md:block absolute top-[48px] left-[12%] right-[12%] h-1 bg-slate-800 rounded-full z-0">
+            <motion.div 
+              initial={{ width: 0 }} 
+              whileInView={{ width: "100%" }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }} 
+              className="h-full bg-teal-500 rounded-full" 
+            />
             
-            {/* Connecting Line (Mobile) */}
-            <div className="md:hidden absolute top-[10%] bottom-[10%] left-1/2 -translate-x-1/2 w-1 bg-slate-800 rounded-full z-0">
+            {/* Add this: Match label on the line */}
+            <motion.div 
+              className="absolute left-[82%] top-1/2 -translate-y-1/2 -translate-x-1/2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 1.2 }}
+            >
+              <span className="bg-slate-900 text-teal-400 font-bold text-lg px-3 py-1 rounded-full whitespace-nowrap">
+                Match
+              </span>
+            </motion.div>
+          </div>  {/* <- Add this closing tag */}
+
+          {/* Connecting Line (Mobile) */}
+          <div className="md:hidden absolute top-[10%] bottom-[10%] left-1/2 -translate-x-1/2 w-1 bg-slate-800 rounded-full z-0">
                <motion.div 
                  initial={{ height: 0 }} 
                  whileInView={{ height: "100%" }} 
