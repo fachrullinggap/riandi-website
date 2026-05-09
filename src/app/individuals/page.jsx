@@ -177,7 +177,7 @@ export default function ServicePage() {
   };
 
   return (
-    <div className="min-h-screen text-slate-900 font-sans selection:bg-teal-300">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-teal-300">
       <Navbar lang={lang} handleLangChange={handleLangChange} theme="blend" />
 
       {/* --- HERO SECTION --- */}
